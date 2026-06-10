@@ -214,6 +214,34 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
 .reveal.in{opacity:1;transform:none}
 #toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-family:var(--display);font-weight:600;font-size:14px;padding:13px 22px;border-radius:11px;z-index:300;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:var(--shadow)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── FIRST FOLD: candidate identity + reviewer ── */
+.report-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+.reviewer{display:flex;align-items:center;gap:11px}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--brand);color:#fff;font-family:var(--display);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;letter-spacing:.02em;flex:none}
+.rev-meta{display:flex;flex-direction:column;line-height:1.35}
+.rev-meta b{font-family:var(--display);font-size:14px;color:var(--ink);font-weight:700}
+.rev-meta span{font-size:12.5px;color:var(--ink-3)}
+.candidate{margin-bottom:16px;position:relative}
+.cand-name{font-size:clamp(32px,5.4vw,48px);font-weight:800;letter-spacing:-.028em;margin-bottom:9px;line-height:1.05}
+.cand-row{display:flex;align-items:center;gap:11px;flex-wrap:wrap;font-size:15.5px}
+.cand-role{font-weight:700;font-family:var(--display);color:var(--ink)}
+.cand-dot{color:var(--line)}
+.cand-email{color:var(--ink-2)}
+.lead{font-size:17px;color:var(--ink-2);max-width:600px;margin-bottom:4px;position:relative}
+.lead em{font-style:normal;color:var(--brand);font-weight:600}
+.review-note{margin-top:26px;position:relative}
+.review-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand);background:#fff;border:1px solid var(--brand-soft);padding:9px 16px;border-radius:99px;box-shadow:var(--shadow)}
+@media(max-width:560px){.report-head{margin-bottom:18px}}
+
+/* ── ITEM ADD / REMOVE (sections 1, 2, 4) ── */
+.s-card,.risk-card,.ba-card{position:relative}
+.item-x{display:none;position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink-3);font-size:13px;cursor:pointer;align-items:center;justify-content:center;box-shadow:var(--shadow);z-index:3;padding:0}
+body.editing .item-x{display:inline-flex}
+.item-x:hover{color:#fff;background:var(--brand);border-color:var(--brand)}
+.add-item{display:none;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--brand);background:#fff;border:1.5px dashed var(--brand);padding:12px 19px;border-radius:12px;cursor:pointer;margin-top:14px}
+body.editing .add-item{display:inline-flex}
+.add-item:hover{background:var(--brand-soft)}
 </style>
 </head>
 <body>
@@ -244,9 +272,22 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow" data-editable contenteditable="false">Resume Analysis Report · Talent500 Recruiter, 15+ yrs exp.</span>
-    <h1 data-editable contenteditable="false" spellcheck="true">Aakash, here's how recruiters <em style="font-style:normal;color:var(--brand)">actually see</em> your resume.</h1>
-    <p class="sub" data-editable contenteditable="false">ATS visibility · Recruiter readability · Positioning · Market readiness — scored across 10 dimensions against current GCC and product-company hiring standards.</p>
+    <div class="report-head">
+      <span class="eyebrow" data-editable contenteditable="false">Resume Analysis Report</span>
+      <div class="reviewer">
+        <span class="avatar" data-editable contenteditable="false">PM</span>
+        <span class="rev-meta"><b data-editable contenteditable="false">Reviewed by Priya Menon</b><span data-editable contenteditable="false">Senior Technical Recruiter · 15+ yrs</span></span>
+      </div>
+    </div>
+    <div class="candidate">
+      <h1 class="cand-name" data-editable contenteditable="false" spellcheck="true">Aakash Gaurav</h1>
+      <div class="cand-row">
+        <span class="cand-role" data-editable contenteditable="false">Senior QA Engineer · 6+ years experience</span>
+        <span class="cand-dot">•</span>
+        <span class="cand-email" data-editable contenteditable="false">aakash.gaurav@example.com</span>
+      </div>
+    </div>
+    <p class="lead" data-editable contenteditable="false">Here's how recruiters <em>actually see</em> your resume — scored across 10 dimensions against current GCC and product-company hiring standards.</p>
     <div class="hero-grid">
       <div>
         <div class="verdicts">
@@ -270,6 +311,7 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
         <p class="edit-hint">↑ Edit scores in the "10 Dimensions" section — gauge updates live</p>
       </div>
     </div>
+    <div class="review-note"><span class="review-badge" data-editable contenteditable="false">✔ Manual recruiter review + AI-assisted ATS analysis</span></div>
   </div>
 </div>
 
@@ -278,11 +320,12 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
   <p class="kicker"><span data-editable contenteditable="false">01 · Executive recruiter summary</span></p>
   <h2 data-editable contenteditable="false">What a recruiter sees in 8 seconds</h2>
   <div class="summary-grid" style="margin-top:20px">
-    <div class="s-card"><h3 data-editable contenteditable="false">Recruiter perception</h3><p data-editable contenteditable="false">Strong QA domain expertise — manual + automation across web and mobile, SDLC ownership, framework and API testing. The capability is clearly there.</p></div>
-    <div class="s-card"><h3 data-editable contenteditable="false">The problem</h3><p data-editable contenteditable="false">Dense content with almost no quantified outcomes. Leadership and project-level achievements are buried, so you read as operational rather than senior.</p></div>
-    <div class="s-card"><h3 data-editable contenteditable="false">ATS visibility risk</h3><p data-editable contenteditable="false">Relevant keywords exist (Selenium, TestCafe, RestAssured, Flutter) but are scattered, with inconsistent role terms like "QA Lead" and "Test Management". Parsing will underperform.</p></div>
-    <div class="s-card"><h3 data-editable contenteditable="false">Shortlist probability</h3><p data-editable contenteditable="false">Highly competitive for mid-to-senior QA roles. Quantified results and explicit leadership emphasis are what's holding the shortlist rate back.</p></div>
+    <div class="s-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h3 data-editable contenteditable="false">Recruiter perception</h3><p data-editable contenteditable="false">Strong QA domain expertise — manual + automation across web and mobile, SDLC ownership, framework and API testing. The capability is clearly there.</p></div>
+    <div class="s-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h3 data-editable contenteditable="false">The problem</h3><p data-editable contenteditable="false">Dense content with almost no quantified outcomes. Leadership and project-level achievements are buried, so you read as operational rather than senior.</p></div>
+    <div class="s-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h3 data-editable contenteditable="false">ATS visibility risk</h3><p data-editable contenteditable="false">Relevant keywords exist (Selenium, TestCafe, RestAssured, Flutter) but are scattered, with inconsistent role terms like "QA Lead" and "Test Management". Parsing will underperform.</p></div>
+    <div class="s-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h3 data-editable contenteditable="false">Shortlist probability</h3><p data-editable contenteditable="false">Highly competitive for mid-to-senior QA roles. Quantified results and explicit leadership emphasis are what's holding the shortlist rate back.</p></div>
   </div>
+  <button class="add-item" onclick="addSummary()">+ Add summary card</button>
 </section>
 
 <!-- WHY NOT SHORTLISTED -->
@@ -291,12 +334,13 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
   <p class="kicker"><span data-editable contenteditable="false">02 · Risk analysis</span></p>
   <h2 data-editable contenteditable="false">Why this resume may not get shortlisted</h2>
   <div class="risk-list" style="margin-top:20px">
-    <div class="risk-card"><h4 data-editable contenteditable="false">Dense technical descriptions</h4><span class="risk-tag" data-editable contenteditable="false">High impact</span><p data-editable contenteditable="false">Achievements get overlooked — recruiters skim and miss your high-value contributions.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">Limited quantified results</h4><span class="risk-tag" data-editable contenteditable="false">High impact</span><p data-editable contenteditable="false">Impact appears qualitative, reducing perceived efficiency and effectiveness.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">Minimal leadership emphasis</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Role progression is unclear — you may be perceived as purely operational.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">ATS keyword inconsistency</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Reduced ranking in automated filtering — you could miss top results for QA Lead and senior automation searches.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">Mixed formatting</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Slower resume scan lowers recruiter retention of your key responsibilities and skills.</p></div>
+    <div class="risk-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h4 data-editable contenteditable="false">Dense technical descriptions</h4><span class="risk-tag" data-editable contenteditable="false">High impact</span><p data-editable contenteditable="false">Achievements get overlooked — recruiters skim and miss your high-value contributions.</p></div>
+    <div class="risk-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h4 data-editable contenteditable="false">Limited quantified results</h4><span class="risk-tag" data-editable contenteditable="false">High impact</span><p data-editable contenteditable="false">Impact appears qualitative, reducing perceived efficiency and effectiveness.</p></div>
+    <div class="risk-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h4 data-editable contenteditable="false">Minimal leadership emphasis</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Role progression is unclear — you may be perceived as purely operational.</p></div>
+    <div class="risk-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h4 data-editable contenteditable="false">ATS keyword inconsistency</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Reduced ranking in automated filtering — you could miss top results for QA Lead and senior automation searches.</p></div>
+    <div class="risk-card" data-removable><button class="item-x" onclick="removeItem(this)">✕</button><h4 data-editable contenteditable="false">Mixed formatting</h4><span class="risk-tag" data-editable contenteditable="false">Medium</span><p data-editable contenteditable="false">Slower resume scan lowers recruiter retention of your key responsibilities and skills.</p></div>
   </div>
+  <button class="add-item" onclick="addRisk()">+ Add risk</button>
   <div class="psych" data-editable contenteditable="false"><b>Why this matters:</b> recruiters spend 6–8 seconds on first-pass screening. Dense, technical content without clear highlights simply doesn't survive that pass.</div>
   </div>
 </section>
@@ -375,26 +419,27 @@ footer{padding:36px 0 130px;border-top:1px solid var(--line);font-size:12.5px;co
   <p class="kicker"><span data-editable contenteditable="false">04 · Proof from your own resume</span></p>
   <h2 data-editable contenteditable="false">Before vs. after — your actual lines, rewritten</h2>
   <p class="sec-sub" data-editable contenteditable="false">Tap to compare. These are lines pulled directly from your resume, rewritten the way our experts would position them.</p>
-  <div class="ba-card" data-ba>
+  <div class="ba-card" data-ba data-removable><button class="item-x" onclick="removeItem(this)">✕</button>
     <div class="ba-head"><h4 data-editable contenteditable="false">Automation regression</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Updating automation regression suite on regular basis. Tool used is TestCafe. API Automation with RestAssured and Dart &amp; Flutter."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Maintained and enhanced automated regression suite for five interconnected web and mobile applications using TestCafe and RestAssured, reducing regression testing time by 30% while improving API coverage."</div></div>
   </div>
-  <div class="ba-card" data-ba>
+  <div class="ba-card" data-ba data-removable><button class="item-x" onclick="removeItem(this)">✕</button>
     <div class="ba-head"><h4 data-editable contenteditable="false">Test management</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Orchestrated test management for new enhancements and projects within an agile framework."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Directed test management for multiple agile projects, coordinating a team of 5 QA engineers and ensuring 95% on-time delivery of high-quality releases."</div></div>
   </div>
-  <div class="ba-card" data-ba>
+  <div class="ba-card" data-ba data-removable><button class="item-x" onclick="removeItem(this)">✕</button>
     <div class="ba-head"><h4 data-editable contenteditable="false">Requirements → test cases</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Requirement gathering and converting them into high level and low level test cases."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Transformed business and functional requirements into detailed test plans, test cases, and RTM for 2 native mobile applications, increasing test coverage by 25%."</div></div>
   </div>
-  <div class="ba-card" data-ba>
+  <div class="ba-card" data-ba data-removable><button class="item-x" onclick="removeItem(this)">✕</button>
     <div class="ba-head"><h4 data-editable contenteditable="false">Defect lifecycle</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Responsible for sending daily status report and defect lifecycle management."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Managed defect lifecycle and daily status reporting for multiple QA teams, improving issue resolution efficiency by 20% and ensuring compliance with client SLA standards."</div></div>
   </div>
+  <button class="add-item" onclick="addExample()">+ Add before/after example</button>
   </div>
 </section>
 
@@ -598,14 +643,15 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   },200);
 })();
 
-document.querySelectorAll('[data-ba]').forEach(card=>{
+function wireBA(card){
   const btns=card.querySelectorAll('.toggle button');
   btns.forEach(btn=>btn.addEventListener('click',()=>{
     btns.forEach(b=>b.classList.toggle('active',b===btn));
     card.querySelector('.ba-text.before').hidden=btn.dataset.v!=='before';
     card.querySelector('.ba-text.after').hidden=btn.dataset.v!=='after';
   }));
-});
+}
+document.querySelectorAll('[data-ba]').forEach(wireBA);
 
 const sticky=document.getElementById('stickyCta');
 const pricing=document.getElementById('pricing');
@@ -613,6 +659,44 @@ let pastHero=false,onPricing=false;
 new IntersectionObserver(es=>{pastHero=!es[0].isIntersecting;updateSticky()},{threshold:0}).observe(document.querySelector('.hero'));
 new IntersectionObserver(es=>{onPricing=es[0].isIntersecting;updateSticky()},{threshold:.2}).observe(pricing);
 function updateSticky(){sticky.classList.toggle('show',pastHero&&!onPricing&&!isEditing);}
+
+/* ── SECTION ITEM ADD / REMOVE (sections 1, 2, 4) ── */
+function removeItem(btn){
+  const card=btn.closest('[data-removable]');
+  if(card&&confirm('Remove this item?')){card.remove();dirty=true;}
+}
+function addSummary(){
+  const grid=document.querySelector('.summary-grid');
+  const card=document.createElement('div');
+  card.className='s-card';card.setAttribute('data-removable','');
+  card.innerHTML='<button class="item-x" onclick="removeItem(this)">\u2715</button>'+
+    '<h3 data-editable contenteditable="true">New heading</h3>'+
+    '<p data-editable contenteditable="true">New summary text.</p>';
+  grid.appendChild(card);card.querySelector('h3').focus();dirty=true;
+}
+function addRisk(){
+  const list=document.querySelector('.risk-list');
+  const card=document.createElement('div');
+  card.className='risk-card';card.setAttribute('data-removable','');
+  card.innerHTML='<button class="item-x" onclick="removeItem(this)">\u2715</button>'+
+    '<h4 data-editable contenteditable="true">New observation</h4>'+
+    '<span class="risk-tag" data-editable contenteditable="true">Medium</span>'+
+    '<p data-editable contenteditable="true">Describe the hiring risk and its impact.</p>';
+  list.appendChild(card);card.querySelector('h4').focus();dirty=true;
+}
+function addExample(){
+  const cards=document.querySelectorAll('.ba-card');
+  const container=cards[cards.length-1].parentElement;
+  const addBtn=container.querySelector('.add-item');
+  const card=document.createElement('div');
+  card.className='ba-card';card.setAttribute('data-ba','');card.setAttribute('data-removable','');
+  card.innerHTML='<button class="item-x" onclick="removeItem(this)">\u2715</button>'+
+    '<div class="ba-head"><h4 data-editable contenteditable="true">New example</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>'+
+    '<div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="true">Paste the original line from the resume here.</div></div>'+
+    '<div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="true">Write the improved, recruiter-ready version here.</div></div>';
+  container.insertBefore(card,addBtn);
+  wireBA(card);card.querySelector('h4').focus();dirty=true;
+}
 
 /* ── SKILL MANAGEMENT ── */
 function makeChip(text){
@@ -689,7 +773,7 @@ function getCleanHTML(){
   const clone=document.documentElement.cloneNode(true);
   clone.querySelector('#editBar')?.remove();
   clone.querySelector('#editToggleBtn')?.remove();
-  clone.querySelectorAll('.edit-hint,.chip-x,.chip-add,.group-x,.add-category').forEach(el=>el.remove());
+  clone.querySelectorAll('.edit-hint,.chip-x,.chip-add,.group-x,.add-category,.item-x,.add-item').forEach(el=>el.remove());
   clone.querySelectorAll('.chip').forEach(c=>{const t=c.querySelector('.chip-txt');if(!t||!t.textContent.trim())c.remove();});
   clone.querySelectorAll('[contenteditable]').forEach(el=>el.setAttribute('contenteditable','false'));
   clone.querySelector('body')?.classList.remove('editing');
