@@ -3,250 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
 <title>Resume Report · Aakash Gaurav · Talent500</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --brand:#583EF5;--brand-deep:#3A28B8;--brand-soft:#EEEBFE;
-  --ink:#17141F;--ink-2:#4B4757;--ink-3:#7A7587;
-  --paper:#FAFAFC;--card:#FFFFFF;--line:#E7E5EF;
-  --risk:#D6373D;--risk-soft:#FDEEEE;
-  --gain:#0F8A52;--gain-soft:#E8F6EF;
-  --amber:#C97A06;--amber-soft:#FCF3E3;
-  --radius:14px;--shadow:0 1px 2px rgba(23,20,31,.05),0 8px 24px rgba(23,20,31,.06);
+  --brand:#4F35F3;--brand-deep:#3A28B8;--brand-soft:#EEEBFE;
+  --ink:#0E0B16;--ink-2:#3A3545;--ink-3:#67617A;
+  --paper:#FFFFFF;--card:#FFFFFF;--surface:#F6F5FA;--line:#D8D4E8;
+  --risk:#D81E33;--risk-deep:#A81426;--risk-soft:#FCE9EB;
+  --gain:#008A4E;--gain-deep:#006B3C;--gain-soft:#E0F5EA;
+  --amber:#C77700;--amber-bright:#F5A623;--amber-soft:#FCF0DA;
+  --radius:16px;
+  --shadow:0 2px 4px rgba(14,11,22,.06),0 12px 32px rgba(14,11,22,.09);
+  --shadow-lg:0 4px 8px rgba(14,11,22,.08),0 20px 48px rgba(14,11,22,.14);
   --display:'Outfit',sans-serif;--body:'Inter',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:var(--display);line-height:1.2}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;color:var(--ink)}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;border:none;border-radius:10px;cursor:pointer;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease;padding:14px 26px}
-.btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(88,62,245,.32)}
-.btn-primary:hover{background:var(--brand-deep);transform:translateY(-1px)}
-.btn-ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:800;font-size:16px;border:none;border-radius:12px;cursor:pointer;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .12s ease;padding:15px 28px;letter-spacing:.01em}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 24px rgba(79,53,243,.35)}
+.btn-primary:hover{background:var(--brand-deep);transform:translateY(-2px);box-shadow:0 12px 30px rgba(79,53,243,.42)}
+.btn-ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
 .btn-ghost:hover{background:var(--brand-soft)}
 
 /* ── EDIT TOOLBAR ── */
-#editBar{
-  display:none;position:sticky;top:0;z-index:200;
-  background:#1A1625;color:#fff;
-  font-family:var(--display);font-size:14px;
-  padding:0 20px;
-  box-shadow:0 2px 12px rgba(0,0,0,.3);
-}
+#editBar{display:none;position:sticky;top:0;z-index:200;background:#0E0B16;color:#fff;font-family:var(--display);font-size:14px;padding:0 20px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
 #editBar.active{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-height:52px}
-.eb-badge{background:var(--amber);color:#fff;font-weight:700;font-size:11.5px;padding:4px 10px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase}
-.eb-label{color:rgba(255,255,255,.6);font-size:13px}
+.eb-badge{background:var(--amber-bright);color:#1A1305;font-weight:800;font-size:11.5px;padding:4px 10px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase}
+.eb-label{color:rgba(255,255,255,.55);font-size:13px}
 .eb-spacer{flex:1}
-.eb-btn{font-family:var(--display);font-weight:700;font-size:13.5px;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;transition:opacity .12s}
-.eb-discard{background:rgba(255,255,255,.1);color:#fff}
-.eb-discard:hover{background:rgba(255,255,255,.18)}
+.eb-btn{font-family:var(--display);font-weight:700;font-size:13.5px;padding:8px 16px;border-radius:8px;border:none;cursor:pointer}
+.eb-discard{background:rgba(255,255,255,.12);color:#fff}
 .eb-save{background:var(--brand);color:#fff}
-.eb-save:hover{background:var(--brand-deep)}
 .eb-publish{background:var(--gain);color:#fff}
-.eb-publish:hover{background:#0a6e41}
 
-/* ── EDIT MODE VISUAL CUES ── */
-body.editing [data-editable]{
-  outline:2px dashed transparent;
-  border-radius:4px;
-  transition:outline-color .15s,background .15s;
-  cursor:text;
-}
-body.editing [data-editable]:hover{
-  outline-color:rgba(88,62,245,.4);
-  background:rgba(88,62,245,.04);
-}
-body.editing [data-editable]:focus{
-  outline:2px solid var(--brand);
-  background:rgba(88,62,245,.06);
-  outline-offset:2px;
-}
-/* score inputs in edit mode */
-body.editing .score-input{
-  background:rgba(88,62,245,.08);
-  border:1.5px solid var(--brand);
-  border-radius:6px;
-  padding:2px 6px;
-  font-family:var(--display);
-  font-weight:800;
-  font-size:15px;
-  width:44px;
-  text-align:center;
-  color:var(--ink);
-}
-.score-input{
-  background:transparent;border:none;
-  font-family:var(--display);font-weight:800;font-size:15px;
-  color:var(--ink);width:2ch;text-align:right;
-  -moz-appearance:textfield;
-  pointer-events:none;
-}
-.score-input::-webkit-outer-spin-button,
-.score-input::-webkit-inner-spin-button{-webkit-appearance:none}
-body.editing .score-input{pointer-events:all}
-
-/* edit-only UI hidden in view mode */
+body.editing [data-editable]{outline:2px dashed transparent;border-radius:4px;transition:outline-color .15s,background .15s;cursor:text}
+body.editing [data-editable]:hover{outline-color:rgba(79,53,243,.45);background:rgba(79,53,243,.05)}
+body.editing [data-editable]:focus{outline:2px solid var(--brand);background:rgba(79,53,243,.07);outline-offset:2px}
+body.editing .score-input{background:rgba(79,53,243,.08);border:1.5px solid var(--brand);border-radius:6px;padding:2px 6px;width:44px;text-align:center;pointer-events:all}
+.score-input{background:transparent;border:none;font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink);width:2ch;text-align:right;-moz-appearance:textfield;pointer-events:none}
+.score-input::-webkit-outer-spin-button,.score-input::-webkit-inner-spin-button{-webkit-appearance:none}
 .edit-hint{display:none;font-size:12px;color:var(--amber);font-weight:600;margin-top:4px}
 body.editing .edit-hint{display:block}
-.edit-only{display:none!important}
-body.editing .edit-only{display:flex!important}
 
 /* ── TOPBAR ── */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:2px solid var(--ink)}
 body.editing .topbar{top:52px}
-.topbar-inner{max-width:880px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
-.logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.topbar-inner{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:14px}
+.logo{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .logo span{color:var(--brand)}
-.score-chip{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:14px}
+.score-chip{margin-left:auto;display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;font-size:15px;white-space:nowrap}
 .score-chip .now{color:var(--ink)}
 .score-chip .arrow{color:var(--ink-3)}
 .score-chip .target{color:var(--gain)}
-.topbar .btn{padding:8px 16px;font-size:14px}
-#editToggleBtn{padding:8px 16px;font-size:14px;background:var(--ink);color:#fff}
-#editToggleBtn:hover{background:#2d2840}
-@media(max-width:560px){.topbar .btn-primary{display:none}}
+.score-chip .lbl{font-weight:500;color:var(--ink-3);font-size:12px}
+.topbar .btn{padding:9px 18px;font-size:14px}
+#editToggleBtn{padding:9px 16px;font-size:13.5px;background:var(--ink);color:#fff}
+#editToggleBtn:hover{background:#2A2438}
+@media(max-width:560px){.topbar .btn-primary{display:none}.score-chip{font-size:13.5px;gap:4px}.score-chip .lbl{display:none}}
 
-/* ── HERO ── */
-.hero{padding:48px 0 36px;background:radial-gradient(900px 420px at 85% -10%,rgba(88,62,245,.10),transparent 60%),radial-gradient(700px 380px at -10% 20%,rgba(31,191,166,.08),transparent 55%)}
-.eyebrow{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
-.hero h1{font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-.02em;margin:10px 0 6px}
-.hero .sub{color:var(--ink-2);max-width:560px}
-.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:center;margin-top:8px}
-@media(max-width:720px){.hero-grid{grid-template-columns:1fr;gap:20px}}
-
-/* gauge */
-.gauge-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;text-align:center}
-.gauge{position:relative;width:220px;margin:0 auto}
+/* ── HERO (light, high contrast) ── */
+.hero{padding:60px 0 52px;background:
+  linear-gradient(180deg,#F4F2FC 0%,#FFFFFF 100%);
+  border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-160px;right:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(79,53,243,.14),transparent 65%)}
+.eyebrow{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);display:inline-block;padding:7px 14px;border-radius:99px}
+.hero h1{font-size:clamp(32px,5.6vw,52px);font-weight:900;letter-spacing:-.028em;margin:18px 0 12px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .sub{color:var(--ink-2);max-width:580px;font-size:17px;font-weight:500}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:center;margin-top:16px;position:relative}
+@media(max-width:720px){.hero-grid{grid-template-columns:1fr;gap:28px}}
+.gauge-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:28px;text-align:center;box-shadow:8px 8px 0 var(--brand-soft)}
+.gauge{position:relative;width:230px;margin:0 auto}
 .gauge svg{width:100%;height:auto;display:block}
-.gauge .num{position:absolute;left:0;right:0;top:54%;transform:translateY(-50%);text-align:center}
-.gauge .num b{font-family:var(--display);font-size:46px;font-weight:800;letter-spacing:-.02em}
-.gauge .num small{display:block;color:var(--ink-3);font-size:13px;margin-top:-4px}
-.delta-line{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;font-family:var(--display);font-weight:700}
-.delta-line .pot{color:var(--gain);font-size:22px}
+.gauge .num{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;pointer-events:none}
+.gauge .num b{font-family:var(--display);font-size:44px;font-weight:900;letter-spacing:-.03em;color:var(--ink);line-height:1}
+.gauge .num small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px;font-weight:600}
+.delta-line{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap;font-family:var(--display);font-weight:800}
+.delta-line .pot{color:var(--gain);font-size:28px}
 .delta-line .lbl{font-size:13px;color:var(--ink-3);font-weight:600}
-.verdicts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.pill{font-size:13.5px;font-weight:600;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:#fff}
-.pill.good{color:var(--gain);background:var(--gain-soft);border-color:transparent}
-.pill.mid{color:var(--amber);background:var(--amber-soft);border-color:transparent}
-.pill.bad{color:var(--risk);background:var(--risk-soft);border-color:transparent}
+.verdicts{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.pill{font-size:13.5px;font-weight:800;padding:8px 15px;border-radius:99px;font-family:var(--display);letter-spacing:.01em}
+.pill.good{color:#fff;background:var(--gain)}
+.pill.mid{color:#1A1305;background:var(--amber-bright)}
+.pill.bad{color:#fff;background:var(--risk)}
+.hero-note{margin-top:22px;font-size:16px;color:var(--ink-2);max-width:540px}
+.hero-note b{color:var(--ink)}
 
 /* ── SECTIONS ── */
-section{padding:44px 0}
-section h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:-.015em;margin-bottom:6px}
-.sec-sub{color:var(--ink-2);max-width:620px;margin-bottom:26px}
-.kicker{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.kicker::after{content:"";height:1px;flex:1;background:var(--line)}
-.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+section{padding:56px 0}
+section.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:-.022em;margin-bottom:8px}
+.sec-sub{color:var(--ink-2);max-width:640px;margin-bottom:30px;font-size:16.5px}
+.kicker{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.kicker::after{content:"";height:2px;flex:1;background:linear-gradient(90deg,var(--brand),transparent)}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.summary-grid{grid-template-columns:1fr}}
-.s-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-.s-card h3{font-size:15px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.s-card{background:var(--card);border:1.5px solid var(--line);border-top:4px solid var(--ink);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.s-card.g{border-top-color:var(--gain)} .s-card.r{border-top-color:var(--risk)} .s-card.a{border-top-color:var(--amber-bright)} .s-card.b{border-top-color:var(--brand)}
+.s-card h3{font-size:16px;font-weight:800;margin-bottom:9px}
 .s-card p{font-size:14.5px;color:var(--ink-2)}
-.dot{width:9px;height:9px;border-radius:50%;flex:none}
-.dot.g{background:var(--gain)} .dot.a{background:var(--amber)} .dot.r{background:var(--risk)} .dot.b{background:var(--brand)}
-.risk-list{display:grid;gap:12px}
-.risk-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--risk);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:start}
-.risk-card h4{font-size:15.5px}
-.risk-card p{font-size:14px;color:var(--ink-2);grid-column:1/-1}
-.risk-tag{font-size:12px;font-weight:700;color:var(--risk);background:var(--risk-soft);border-radius:99px;padding:4px 10px;white-space:nowrap}
-.psych{margin-top:16px;background:var(--brand-soft);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--brand-deep)}
-.psych b{font-family:var(--display)}
-.kw-group{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:12px}
-.kw-group h4{font-size:15px;margin-bottom:4px}
-.kw-group .why{font-size:13.5px;color:var(--ink-3);margin-bottom:12px}
+
+.risk-list{display:grid;gap:13px}
+.risk-card{background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--risk);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:start;box-shadow:var(--shadow)}
+.risk-card h4{font-size:16.5px;font-weight:800}
+.risk-card p{font-size:14.5px;color:var(--ink-2);grid-column:1/-1}
+.risk-tag{font-size:11.5px;font-weight:800;font-family:var(--display);color:#fff;background:var(--risk);border-radius:99px;padding:5px 12px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase}
+.risk-tag.med{background:var(--amber-bright);color:#1A1305}
+.psych{margin-top:18px;background:var(--ink);color:rgba(255,255,255,.88);border-radius:14px;padding:18px 22px;font-size:15px}
+.psych b{font-family:var(--display);color:#fff}
+
+.kw-group{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:13px;box-shadow:var(--shadow)}
+.kw-group h4{font-size:16px;font-weight:800;margin-bottom:4px}
+.kw-group .why{font-size:13.5px;color:var(--ink-3);margin-bottom:13px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:13.5px;font-weight:600;color:var(--brand-deep);background:var(--brand-soft);padding:6px 12px;border-radius:8px}
-.ba-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:14px}
-.ba-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.ba-head h4{font-size:14px;color:var(--ink-3);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.toggle{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:3px}
-.toggle button{font-family:var(--display);font-weight:700;font-size:13px;border:none;background:transparent;color:var(--ink-3);padding:6px 14px;border-radius:99px;cursor:pointer}
+.chip{font-size:13.5px;font-weight:700;font-family:var(--display);color:#fff;background:var(--brand);padding:7px 14px;border-radius:8px}
+
+.ba-card{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:16px}
+.ba-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.ba-head h4{font-size:13px;color:var(--ink-3);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-family:var(--display)}
+.toggle{display:inline-flex;background:var(--surface);border:1.5px solid var(--line);border-radius:99px;padding:3px}
+.toggle button{font-family:var(--display);font-weight:800;font-size:13px;border:none;background:transparent;color:var(--ink-3);padding:7px 16px;border-radius:99px;cursor:pointer;transition:all .15s}
 .toggle button.active{background:var(--ink);color:#fff}
-.ba-text{font-size:15px;border-radius:10px;padding:14px 16px;transition:background .2s}
-.ba-text.before{background:var(--risk-soft);color:var(--ink-2)}
-.ba-text.after{background:var(--gain-soft);color:var(--ink)}
-.ba-text .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-.ba-text.before .tag{color:var(--risk)}
-.ba-text.after .tag{color:var(--gain)}
-.dims{display:grid;gap:14px}
-.dim{display:grid;grid-template-columns:190px 1fr 52px;gap:14px;align-items:center}
+.ba-text{font-size:15.5px;border-radius:12px;padding:16px 18px}
+.ba-text.before{background:var(--risk-soft);color:var(--ink-2);border-left:5px solid var(--risk)}
+.ba-text.after{background:var(--gain-soft);color:var(--ink);border-left:5px solid var(--gain)}
+.ba-text .tag{display:inline-block;font-size:11px;font-weight:900;font-family:var(--display);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+.ba-text.before .tag{color:var(--risk-deep)}
+.ba-text.after .tag{color:var(--gain-deep)}
+
+.dims{display:grid;gap:16px}
+.dim{display:grid;grid-template-columns:200px 1fr 52px;gap:16px;align-items:center}
 @media(max-width:640px){.dim{grid-template-columns:1fr 52px}.dim .bar{grid-column:1/-1;order:3}}
-.dim .name{font-size:14.5px;font-weight:600}
-.dim .name small{display:block;font-weight:400;color:var(--ink-3);font-size:12.5px;line-height:1.4}
-.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.dim .name{font-size:15px;font-weight:700}
+.dim .name small{display:block;font-weight:400;color:var(--ink-3);font-size:12.5px;line-height:1.45}
+.bar{height:11px;background:#E9E6F2;border:1px solid var(--line);border-radius:99px;overflow:hidden}
 .bar i{display:block;height:100%;border-radius:99px;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
-.dim .val{font-family:var(--display);font-weight:800;font-size:15px;text-align:right;display:flex;align-items:center;gap:4px}
-.f-good i{background:var(--gain)} .f-mid i{background:var(--amber)} .f-low i{background:var(--risk)}
-.wins{display:grid;gap:10px}
-.win{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14.5px}
-.win .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gain-soft);color:var(--gain);font-family:var(--display);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
-.locked{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.locked .doc{padding:26px;filter:blur(5px);user-select:none;pointer-events:none}
-.doc h4{font-size:17px;margin-bottom:4px}
-.doc .role{color:var(--brand);font-weight:600;font-size:14px;margin-bottom:12px}
-.doc ul{list-style:none;display:grid;gap:8px;font-size:14px;color:var(--ink-2)}
+.dim .val{display:flex;align-items:center;justify-content:flex-end}
+.f-good i{background:var(--gain)} .f-mid i{background:var(--amber-bright)} .f-low i{background:var(--risk)}
+
+.wins{display:grid;gap:12px}
+.win{display:flex;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:17px 19px;font-size:15px;box-shadow:var(--shadow)}
+.win .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gain);color:#fff;font-family:var(--display);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+
+.locked{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.locked .doc{padding:28px;filter:blur(6px);user-select:none;pointer-events:none}
+.doc h4{font-size:18px;margin-bottom:4px}
+.doc .role{color:var(--brand);font-weight:700;font-size:14px;margin-bottom:13px}
+.doc ul{list-style:none;display:grid;gap:9px;font-size:14px;color:var(--ink-2)}
 .doc ul li::before{content:"▸ ";color:var(--brand)}
-.lock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(180deg,rgba(250,250,252,.25),rgba(250,250,252,.88));text-align:center;padding:24px}
-.lock-overlay .lock{width:44px;height:44px;border-radius:12px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px}
-.lock-overlay h3{font-size:19px}
-.lock-overlay p{font-size:14px;color:var(--ink-2);max-width:380px}
-#pricing{background:linear-gradient(180deg,#fff,var(--brand-soft) 140%);border-top:1px solid var(--line)}
-.validity{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--amber);background:var(--amber-soft);border-radius:99px;padding:7px 14px;margin-bottom:22px}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.95));text-align:center;padding:24px}
+.lock-overlay .lock{width:52px;height:52px;border-radius:14px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
+.lock-overlay h3{font-size:22px;font-weight:900}
+.lock-overlay p{font-size:14.5px;color:var(--ink-2);max-width:400px}
+
+/* ── PRICING (light, high contrast) ── */
+#pricing{background:linear-gradient(180deg,#F4F2FC,#FFFFFF);border-top:2px solid var(--ink)}
+.validity{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;font-family:var(--display);color:#1A1305;background:var(--amber-bright);border-radius:99px;padding:9px 18px;margin-bottom:28px;box-shadow:0 4px 14px rgba(245,166,35,.35)}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:720px){.plans{grid-template-columns:1fr}}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;position:relative}
-.plan.reco{border:2px solid var(--brand);box-shadow:0 12px 36px rgba(88,62,245,.16)}
-.reco-badge{position:absolute;top:-13px;left:24px;background:var(--brand);color:#fff;font-family:var(--display);font-weight:700;font-size:12.5px;padding:5px 13px;border-radius:99px}
-.plan h3{font-size:21px}
-.plan .for{font-size:13.5px;color:var(--ink-3);margin:4px 0 14px}
+.plan{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:30px;display:flex;flex-direction:column;position:relative;box-shadow:var(--shadow)}
+.plan.reco{border:3px solid var(--brand);box-shadow:var(--shadow-lg),0 0 0 6px var(--brand-soft);transform:scale(1.02)}
+@media(max-width:720px){.plan.reco{transform:none}}
+.reco-badge{position:absolute;top:-15px;left:26px;background:var(--brand);color:#fff;font-family:var(--display);font-weight:800;font-size:13px;padding:6px 16px;border-radius:99px;box-shadow:0 4px 14px rgba(79,53,243,.4)}
+.plan h3{font-size:23px;font-weight:900}
+.plan .for{font-size:14px;color:var(--ink-3);margin:5px 0 16px}
 .price{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-.price b{font-family:var(--display);font-size:34px;font-weight:800;letter-spacing:-.02em}
-.price s{color:var(--ink-3);font-size:17px}
-.price .off{font-size:12.5px;font-weight:700;color:var(--gain);background:var(--gain-soft);padding:3px 9px;border-radius:99px}
-.plan ul{list-style:none;margin:16px 0 22px;display:grid;gap:9px;font-size:14.5px}
-.plan ul li{display:flex;gap:9px}
-.plan ul li::before{content:"✓";color:var(--gain);font-weight:800;flex:none}
+.price b{font-family:var(--display);font-size:42px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.price s{color:var(--ink-3);font-size:18px}
+.price .off{font-size:13px;font-weight:800;font-family:var(--display);color:#fff;background:var(--gain);padding:4px 11px;border-radius:99px}
+.plan ul{list-style:none;margin:18px 0 24px;display:grid;gap:10px;font-size:14.5px}
+.plan ul li{display:flex;gap:10px}
+.plan ul li::before{content:"✓";color:var(--gain);font-weight:900;flex:none}
 .plan ul li.no{color:var(--ink-3)}
 .plan ul li.no::before{content:"—";color:var(--line)}
 .plan .btn{margin-top:auto;width:100%}
-.alt-cta{margin-top:20px;text-align:center;font-size:14.5px;color:var(--ink-2)}
-.alt-cta a{color:var(--brand);font-weight:600;text-decoration:none}
-.proof-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
-@media(max-width:640px){.proof-strip{grid-template-columns:1fr 1fr}}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
-.stat b{font-family:var(--display);font-size:26px;font-weight:800;color:var(--brand);display:block}
-.stat span{font-size:13px;color:var(--ink-3)}
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:640px){.quotes{grid-template-columns:1fr}}
-.quote{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;font-size:14.5px;color:var(--ink-2)}
-.quote .who{margin-top:10px;font-size:13px;font-weight:600;color:var(--ink)}
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:0 18px}
-summary{font-family:var(--display);font-weight:600;font-size:15px;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
-summary::after{content:"+";font-size:20px;color:var(--brand);font-weight:600}
-details[open] summary::after{content:"–"}
-details p{padding:0 0 16px;font-size:14.5px;color:var(--ink-2)}
-footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
-.sticky-cta.show{transform:translateY(0)}
-.sticky-inner{max-width:880px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
-.sticky-inner .delta{font-family:var(--display);font-weight:800;font-size:16px}
-.sticky-inner .delta .t{color:var(--gain)}
-.sticky-inner .sub{font-size:12px;color:var(--ink-3)}
-.sticky-inner .btn{margin-left:auto;padding:11px 20px;font-size:15px;white-space:nowrap}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
-.reveal.in{opacity:1;transform:none}
+.alt-cta{margin-top:26px;text-align:center;font-size:14.5px;color:var(--ink-2)}
+.alt-cta a{color:var(--brand);font-weight:700;text-decoration:none}
 
-/* saved toast */
-#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:#1A1625;color:#fff;font-family:var(--display);font-weight:600;font-size:14px;padding:12px 20px;border-radius:10px;z-index:300;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.proof-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+@media(max-width:640px){.proof-strip{grid-template-columns:1fr 1fr}}
+.stat{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:22px;text-align:center;box-shadow:var(--shadow)}
+.stat b{font-family:var(--display);font-size:36px;font-weight:900;color:var(--brand);display:block;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--ink-2);font-weight:600}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.quotes{grid-template-columns:1fr}}
+.quote{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:20px;font-size:15px;color:var(--ink-2);box-shadow:var(--shadow)}
+.quote .who{margin-top:12px;font-size:13px;font-weight:800;font-family:var(--display);color:var(--ink)}
+
+details{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:11px;padding:0 20px;box-shadow:var(--shadow)}
+summary{font-family:var(--display);font-weight:700;font-size:15.5px;padding:18px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:"+";font-size:22px;color:var(--brand);font-weight:700}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 18px;font-size:14.5px;color:var(--ink-2)}
+
+footer{padding:38px 0 130px;border-top:1.5px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:2px solid var(--ink);transform:translateY(110%);transition:transform .3s ease}
+.sticky-cta.show{transform:translateY(0)}
+.sticky-inner{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:14px}
+.sticky-inner .delta{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.sticky-inner .delta .t{color:var(--gain)}
+.sticky-inner .sub{font-size:12px;color:var(--ink-3);font-weight:600}
+.sticky-inner .btn{margin-left:auto;padding:12px 24px;font-size:15px;white-space:nowrap}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+#toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:#0E0B16;color:#fff;font-family:var(--display);font-weight:700;font-size:14px;padding:13px 22px;border-radius:12px;z-index:300;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.35)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- EDIT TOOLBAR (visible only when editing) -->
 <div id="editBar">
   <span class="eb-badge">✎ Edit mode</span>
   <span class="eb-label">Click any text to edit · Click scores to change</span>
@@ -262,19 +234,19 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
     <div class="score-chip">
       <span class="now" id="headerScore">66</span>
       <span class="arrow">→</span>
-      <span class="target">87</span>
-      <span style="font-weight:500;color:var(--ink-3);font-size:12px">projected</span>
+      <span class="target">85–90</span>
+      <span class="lbl">projected</span>
     </div>
     <button class="btn" id="editToggleBtn" onclick="toggleEditMode()">✎ Edit Report</button>
-    <a class="btn btn-primary" href="#pricing">Unlock 87</a>
+    <a class="btn btn-primary" href="#pricing">Unlock 85+</a>
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Resume Analysis Report · Reviewed by a Talent500 recruiter, 15+ yrs exp.</p>
-    <h1 data-editable contenteditable="false" spellcheck="true">Aakash, here's how recruiters see your resume.</h1>
+    <span class="eyebrow">Resume Analysis Report · Talent500 Recruiter, 15+ yrs exp.</span>
+    <h1 data-editable contenteditable="false" spellcheck="true">Aakash, here's how recruiters <em>actually see</em> your resume.</h1>
     <p class="sub" data-editable contenteditable="false">ATS visibility · Recruiter readability · Positioning · Market readiness — scored across 10 dimensions against current GCC and product-company hiring standards.</p>
     <div class="hero-grid">
       <div>
@@ -282,21 +254,21 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
           <span class="pill good" data-editable contenteditable="false">✓ Strong technical depth</span>
           <span class="pill mid" data-editable contenteditable="false">△ Moderate ATS optimization</span>
           <span class="pill bad" data-editable contenteditable="false">✕ Low achievement visibility</span>
-          <span class="pill bad" data-editable contenteditable="false">✕ Leadership signals weak</span>
+          <span class="pill bad" data-editable contenteditable="false">✕ Weak leadership signals</span>
         </div>
-        <p style="margin-top:18px;font-size:15px;color:var(--ink-2)" data-editable contenteditable="false">Your profile is competitive for mid-to-senior QA and Automation Lead roles — but the resume is currently under-selling it. Below is exactly why, with line-by-line proof from your own resume.</p>
+        <p class="hero-note" data-editable contenteditable="false">Your profile is competitive for <b>mid-to-senior QA and Automation Lead roles</b> — but your resume is under-selling it. Below is exactly why, with line-by-line proof from your own resume.</p>
       </div>
       <div class="gauge-card">
         <div class="gauge">
           <svg viewBox="0 0 200 120">
-            <path d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="var(--line)" stroke-width="14" stroke-linecap="round"/>
-            <path id="potArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="var(--gain-soft)" stroke-width="14" stroke-linecap="round"/>
-            <path id="nowArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="var(--brand)" stroke-width="14" stroke-linecap="round"/>
+            <path d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="#E9E6F2" stroke-width="15" stroke-linecap="round"/>
+            <path id="potArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="#B9E8CF" stroke-width="15" stroke-linecap="round"/>
+            <path id="nowArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="#4F35F3" stroke-width="15" stroke-linecap="round"/>
           </svg>
           <div class="num"><b id="scoreNum">0</b><small>your score / 100</small></div>
         </div>
-        <div class="delta-line"><span class="pot">87</span><span class="lbl">projected after optimization</span></div>
-        <p class="edit-hint">↑ Edit scores in the "10 Dimensions" section below — gauge updates live</p>
+        <div class="delta-line"><span class="pot">85–90</span><span class="lbl">projected after optimization</span></div>
+        <p class="edit-hint">↑ Edit scores in the "10 Dimensions" section — gauge updates live</p>
       </div>
     </div>
   </div>
@@ -306,56 +278,68 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
 <section class="wrap reveal">
   <p class="kicker">01 · Executive recruiter summary</p>
   <h2>What a recruiter sees in 8 seconds</h2>
-  <div class="summary-grid" style="margin-top:18px">
-    <div class="s-card"><h3><span class="dot g"></span>Recruiter perception</h3><p data-editable contenteditable="false">Strong QA domain expertise — manual + automation across web and mobile, SDLC ownership, framework and API testing. The capability is clearly there.</p></div>
-    <div class="s-card"><h3><span class="dot r"></span>The problem</h3><p data-editable contenteditable="false">Dense content with almost no quantified outcomes. Leadership and project-level achievements are buried, so you read as operational rather than senior.</p></div>
-    <div class="s-card"><h3><span class="dot a"></span>ATS visibility risk</h3><p data-editable contenteditable="false">Relevant keywords exist (Selenium, TestCafe, RestAssured, Flutter) but are scattered, with inconsistent role terms like "QA Lead" and "Test Management". Parsing will underperform.</p></div>
-    <div class="s-card"><h3><span class="dot b"></span>Shortlist probability</h3><p data-editable contenteditable="false">Highly competitive for mid-to-senior QA roles. Quantified results and explicit leadership emphasis are what's holding the shortlist rate back.</p></div>
+  <div class="summary-grid" style="margin-top:20px">
+    <div class="s-card g"><h3>Recruiter perception</h3><p data-editable contenteditable="false">Strong QA domain expertise — manual + automation across web and mobile, SDLC ownership, framework and API testing. The capability is clearly there.</p></div>
+    <div class="s-card r"><h3>The problem</h3><p data-editable contenteditable="false">Dense content with almost no quantified outcomes. Leadership and project-level achievements are buried, so you read as operational rather than senior.</p></div>
+    <div class="s-card a"><h3>ATS visibility risk</h3><p data-editable contenteditable="false">Relevant keywords exist (Selenium, TestCafe, RestAssured, Flutter) but are scattered, with inconsistent role terms like "QA Lead" and "Test Management". Parsing will underperform.</p></div>
+    <div class="s-card b"><h3>Shortlist probability</h3><p data-editable contenteditable="false">Highly competitive for mid-to-senior QA roles. Quantified results and explicit leadership emphasis are what's holding the shortlist rate back.</p></div>
   </div>
 </section>
 
 <!-- WHY NOT SHORTLISTED -->
-<section class="wrap reveal">
+<section class="alt reveal">
+  <div class="wrap">
   <p class="kicker">02 · Risk analysis</p>
   <h2>Why this resume may not get shortlisted</h2>
-  <div class="risk-list">
+  <div class="risk-list" style="margin-top:20px">
     <div class="risk-card"><h4 data-editable contenteditable="false">Dense technical descriptions</h4><span class="risk-tag">High impact</span><p data-editable contenteditable="false">Achievements get overlooked — recruiters skim and miss your high-value contributions.</p></div>
     <div class="risk-card"><h4 data-editable contenteditable="false">Limited quantified results</h4><span class="risk-tag">High impact</span><p data-editable contenteditable="false">Impact appears qualitative, reducing perceived efficiency and effectiveness.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">Minimal leadership emphasis</h4><span class="risk-tag">Medium impact</span><p data-editable contenteditable="false">Role progression is unclear — you may be perceived as purely operational.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">ATS keyword inconsistency</h4><span class="risk-tag">Medium impact</span><p data-editable contenteditable="false">Reduced ranking in automated filtering — you could miss top results for QA Lead and senior automation searches.</p></div>
-    <div class="risk-card"><h4 data-editable contenteditable="false">Mixed formatting</h4><span class="risk-tag">Medium impact</span><p data-editable contenteditable="false">Slower resume scan lowers recruiter retention of your key responsibilities and skills.</p></div>
+    <div class="risk-card"><h4 data-editable contenteditable="false">Minimal leadership emphasis</h4><span class="risk-tag med">Medium</span><p data-editable contenteditable="false">Role progression is unclear — you may be perceived as purely operational.</p></div>
+    <div class="risk-card"><h4 data-editable contenteditable="false">ATS keyword inconsistency</h4><span class="risk-tag med">Medium</span><p data-editable contenteditable="false">Reduced ranking in automated filtering — you could miss top results for QA Lead and senior automation searches.</p></div>
+    <div class="risk-card"><h4 data-editable contenteditable="false">Mixed formatting</h4><span class="risk-tag med">Medium</span><p data-editable contenteditable="false">Slower resume scan lowers recruiter retention of your key responsibilities and skills.</p></div>
   </div>
   <div class="psych" data-editable contenteditable="false"><b>Why this matters:</b> recruiters spend 6–8 seconds on first-pass screening. Dense, technical content without clear highlights simply doesn't survive that pass.</div>
+  </div>
+</section>
+
+<!-- KEYWORD GAPS -->
+<section class="wrap reveal">
+  <p class="kicker">03 · ATS &amp; keyword gap analysis</p>
+  <h2>Keywords your resume is missing</h2>
+  <p class="sec-sub">These are the terms ATS filters and recruiters search for in senior QA hiring — currently missing or underused in your resume.</p>
+  <div class="kw-group"><h4>Leadership &amp; team management</h4><p class="why">Signals capability to guide teams and manage projects.</p><div class="chips"><span class="chip">QA Lead</span><span class="chip">Test Lead</span><span class="chip">Mentorship</span></div></div>
+  <div class="kw-group"><h4>Automation &amp; framework development</h4><p class="why">ATS and recruiters filter for structured automation capabilities.</p><div class="chips"><span class="chip">Automation Framework</span><span class="chip">CI/CD</span><span class="chip">Regression Suite</span></div></div>
+  <div class="kw-group"><h4>Test management</h4><p class="why">Highlights end-to-end QA ownership.</p><div class="chips"><span class="chip">Test Plan Development</span><span class="chip">Test Strategy</span><span class="chip">RTM</span></div></div>
+  <div class="kw-group"><h4>Metrics &amp; impact</h4><p class="why">Quantified outcomes increase recruiter confidence.</p><div class="chips"><span class="chip">Defect Reduction</span><span class="chip">Coverage %</span><span class="chip">Test Efficiency</span></div></div>
+  <div class="kw-group"><h4>Technical tools</h4><p class="why">Strengthens keyword alignment and ATS optimization.</p><div class="chips"><span class="chip">JIRA</span><span class="chip">Azure DevOps</span><span class="chip">Perfecto</span><span class="chip">TestCafe</span><span class="chip">Selenium</span><span class="chip">RestAssured</span></div></div>
 </section>
 
 <!-- BEFORE/AFTER -->
-<section class="wrap reveal">
+<section class="alt reveal">
+  <div class="wrap">
   <p class="kicker">04 · Proof from your own resume</p>
   <h2>Before vs. after — your actual lines, rewritten</h2>
   <p class="sec-sub">Tap to compare. These are lines pulled directly from your resume, rewritten the way our experts would position them.</p>
-
   <div class="ba-card" data-ba>
     <div class="ba-head"><h4>Automation regression</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Updating automation regression suite on regular basis. Tool used is TestCafe. API Automation with RestAssured and Dart &amp; Flutter."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Maintained and enhanced automated regression suite for five interconnected web and mobile applications using TestCafe and RestAssured, reducing regression testing time by 30% while improving API coverage."</div></div>
   </div>
-
   <div class="ba-card" data-ba>
     <div class="ba-head"><h4>Test management</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Orchestrated test management for new enhancements and projects within an agile framework."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Directed test management for multiple agile projects, coordinating a team of 5 QA engineers and ensuring 95% on-time delivery of high-quality releases."</div></div>
   </div>
-
   <div class="ba-card" data-ba>
     <div class="ba-head"><h4>Requirements → test cases</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Requirement gathering and converting them into high level and low level test cases."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Transformed business and functional requirements into detailed test plans, test cases, and RTM for 2 native mobile applications, increasing test coverage by 25%."</div></div>
   </div>
-
   <div class="ba-card" data-ba>
     <div class="ba-head"><h4>Defect lifecycle</h4><div class="toggle"><button class="active" data-v="before">Before</button><button data-v="after">After</button></div></div>
     <div class="ba-text before"><span class="tag">Your resume today</span><div data-editable contenteditable="false">"Responsible for sending daily status report and defect lifecycle management."</div></div>
     <div class="ba-text after" hidden><span class="tag">Optimized</span><div data-editable contenteditable="false">"Managed defect lifecycle and daily status reporting for multiple QA teams, improving issue resolution efficiency by 20% and ensuring compliance with client SLA standards."</div></div>
+  </div>
   </div>
 </section>
 
@@ -364,29 +348,31 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
   <p class="kicker">05 · Resume diagnosis</p>
   <h2>Your score across 10 dimensions</h2>
   <p class="sec-sub">Cumulative score: <b id="cumulativeScore" style="font-family:var(--display)">66 / 100</b>. Anything below 7 is actively costing you shortlists.</p>
-  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score number to change it. The gauge, header, and cumulative total all update automatically.</p>
+  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score number to change it. Everything updates automatically.</p>
   <div class="dims" id="dimsContainer">
-    <div class="dim" data-weight="8"><div class="name">Technical depth<small>Excellent QA, automation and API testing experience</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="8" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="7"><div class="name">ATS optimization<small>Keywords present but need structured placement</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="7"><div class="name">Keyword alignment<small>Strong technical terms; weak for senior QA roles</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="7"><div class="name">Role alignment<small>Strong fit for QA engineer/lead; clarity can improve</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="7"><div class="name">Market competitiveness<small>Strong mid-to-senior profile; metrics will boost it</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="6"><div class="name">Recruiter readability<small>Dense content; achievements need highlighting</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="6"><div class="name">Leadership positioning<small>Coordination present; mentorship not emphasized</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="6"><div class="name">Achievement visibility<small>Minimal quantification of project and team impact</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="6"><div class="name">Business impact<small>Technical impact shown; measurable outcomes weak</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10" data-field="dim"/></div></div>
-    <div class="dim" data-weight="6"><div class="name">Formatting<small>Chronological; needs recruiter-friendly modernization</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10" data-field="dim"/></div></div>
+    <div class="dim"><div class="name">Technical depth<small>Excellent QA, automation and API testing experience</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="8" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">ATS optimization<small>Keywords present but need structured placement</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Keyword alignment<small>Strong technical terms; weak for senior QA roles</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Role alignment<small>Strong fit for QA engineer/lead; clarity can improve</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Market competitiveness<small>Strong mid-to-senior profile; metrics will boost it</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Recruiter readability<small>Dense content; achievements need highlighting</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Leadership positioning<small>Coordination present; mentorship not emphasized</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Achievement visibility<small>Minimal quantification of project and team impact</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Business impact<small>Technical impact shown; measurable outcomes weak</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
+    <div class="dim"><div class="name">Formatting<small>Chronological; needs recruiter-friendly modernization</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
   </div>
 </section>
 
 <!-- QUICK WINS -->
-<section class="wrap reveal">
+<section class="alt reveal">
+  <div class="wrap">
   <p class="kicker">06 · Free quick wins</p>
   <h2>Three fixes you can make today</h2>
-  <div class="wins">
+  <div class="wins" style="margin-top:20px">
     <div class="win"><span class="n">1</span><div data-editable contenteditable="false"><b>Add "QA Lead" to your headline and most recent role title context.</b> Recruiters search this exact term; right now you don't rank for it.</div></div>
     <div class="win"><span class="n">2</span><div data-editable contenteditable="false"><b>Quantify your top 3 bullets.</b> Team size, number of applications covered, regression time saved — even approximate numbers beat none.</div></div>
     <div class="win"><span class="n">3</span><div data-editable contenteditable="false"><b>Create a dedicated "Tools" line under each role</b> listing JIRA, Azure DevOps, Selenium, TestCafe, RestAssured — this fixes most of your ATS keyword scatter.</div></div>
+  </div>
   </div>
 </section>
 
@@ -394,7 +380,7 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
 <section class="wrap reveal">
   <p class="kicker">07 · Your optimized resume</p>
   <h2>A preview of your rewritten resume</h2>
-  <div class="locked">
+  <div class="locked" style="margin-top:20px">
     <div class="doc">
       <h4>Aakash Gaurav</h4>
       <p class="role">Senior QA Engineer · Automation Lead — Web &amp; Mobile</p>
@@ -419,9 +405,9 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
 <section id="pricing">
   <div class="wrap reveal">
     <p class="kicker">08 · Recommended next step</p>
-    <h2>Take your score from <span id="pricingScoreFrom">66</span> → 87</h2>
+    <h2>Take your score from <span id="pricingScoreFrom">66</span> → 85–90</h2>
     <p class="sec-sub">Both plans include a one-on-one call with a resume expert and a re-scored diagnosis after optimization.</p>
-    <div class="validity">⏱ Report pricing valid until <b data-editable contenteditable="false">17 June 2026</b></div>
+    <div class="validity">⏱ Report pricing valid until <b data-editable contenteditable="false">&nbsp;17 June 2026</b></div>
     <div class="plans">
       <div class="plan">
         <h3>Resume Pro</h3>
@@ -461,7 +447,7 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
 <section class="wrap reveal">
   <p class="kicker">09 · Why candidates trust this</p>
   <h2>Results from optimized resumes</h2>
-  <div class="proof-strip" style="margin-top:18px">
+  <div class="proof-strip" style="margin-top:20px">
     <div class="stat"><b>1,200+</b><span>resumes optimized</span></div>
     <div class="stat"><b>+21 pts</b><span>average score lift</span></div>
     <div class="stat"><b>2–3 days</b><span>to expert connect</span></div>
@@ -472,16 +458,30 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="alt reveal">
+  <div class="wrap">
+  <p class="kicker">10 · Questions</p>
+  <h2>Frequently asked</h2>
+  <div style="margin-top:20px">
+    <details><summary>What exactly happens after I pay?</summary><p>You'll be connected with a resume expert within 2–3 working days for a 30-minute profile discussion. Your first draft is delivered 3 working days after the call, followed by a revision cycle and a re-scored diagnosis.</p></details>
+    <details><summary>Will the new resume pass ATS systems?</summary><p>Yes — the rewrite uses ATS-safe formatting and keyword alignment targeting an 85+ score on the same diagnosis you've just seen, validated before delivery.</p></details>
+    <details><summary>Can I use this for specific roles or companies?</summary><p>The expert call covers your target roles and companies, and the rewrite is positioned for them. The Resume Package also includes a role-specific cover letter.</p></details>
+    <details><summary>Is this written by AI?</summary><p>Your resume is rewritten by a resume expert, supported by our ATS analysis tooling. The diagnosis you've just read combines both.</p></details>
+  </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
-    <p style="margin-bottom:8px"><a href="#" style="color:var(--brand);font-weight:600;text-decoration:none">↓ Download this report as PDF</a></p>
+    <p style="margin-bottom:8px"><a href="#" style="color:var(--brand);font-weight:700;text-decoration:none">↓ Download this report as PDF</a></p>
     <p>This report is for your internal use only and may not be disclosed externally without prior approval from Talent500. © Talent500 · 1Wrk</p>
   </div>
 </footer>
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-inner">
-    <div><div class="delta"><span id="stickyScore">66</span> <span style="color:var(--ink-3)">→</span> <span class="t">87</span></div><div class="sub">Pricing valid 7 days</div></div>
+    <div><div class="delta"><span id="stickyScore">66</span> <span style="color:var(--ink-3)">→</span> <span class="t">85–90</span></div><div class="sub">Pricing valid 7 days</div></div>
     <a class="btn btn-primary" href="#pricing">Unlock</a>
   </div>
 </div>
@@ -489,48 +489,8 @@ footer{padding:34px 0 120px;border-top:1px solid var(--line);font-size:12.5px;co
 <div id="toast"></div>
 
 <script>
-// ─── STATE ───────────────────────────────────────────────
-let isEditing = false;
-let savedHTML = null;
+let isEditing=false,savedHTML=null,dirty=false;
 
-// ─── GAUGE ───────────────────────────────────────────────
-function animateGauge(score){
-  const pot=87;
-  const nowArc=document.getElementById('nowArc');
-  const potArc=document.getElementById('potArc');
-  const len=nowArc.getTotalLength();
-  [nowArc,potArc].forEach(a=>{a.style.strokeDasharray=len});
-  potArc.style.strokeDashoffset=len*(1-pot/100);
-  nowArc.style.strokeDashoffset=len*(1-score/100);
-  document.getElementById('scoreNum').textContent=score;
-  document.getElementById('headerScore').textContent=score;
-  document.getElementById('stickyScore').textContent=score;
-  document.getElementById('pricingScoreFrom').textContent=score;
-}
-function animateGaugeCount(target){
-  const el=document.getElementById('scoreNum');
-  const start=parseInt(el.textContent)||0;
-  const t0=performance.now();
-  const dur=900;
-  (function tick(t){
-    const p=Math.min((t-t0)/dur,1);
-    const ease=-1+(4-2*p)*p; // ease out quad
-    const v=Math.round(start+(target-start)*(p<.5?2*p*p:ease));
-    el.textContent=v;
-    document.getElementById('headerScore').textContent=v;
-    document.getElementById('stickyScore').textContent=v;
-    document.getElementById('pricingScoreFrom').textContent=v;
-    if(p<1)requestAnimationFrame(tick);
-    else{ el.textContent=target; document.getElementById('headerScore').textContent=target; }
-  })(t0);
-  const nowArc=document.getElementById('nowArc');
-  const len=nowArc.getTotalLength();
-  nowArc.style.transition='stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1)';
-  nowArc.style.strokeDashoffset=len*(1-target/100);
-  setTimeout(()=>nowArc.style.transition='',1000);
-}
-
-// ─── DIMENSIONS ──────────────────────────────────────────
 function recalcScore(){
   const inputs=document.querySelectorAll('#dimsContainer input.score-input');
   let total=0;
@@ -540,7 +500,8 @@ function recalcScore(){
     const dim=inp.closest('.dim');
     const bar=dim.querySelector('.bar i');
     bar.style.width=(v*10)+'%';
-    dim.className='dim '+(v>=8?'f-good':v>=7?'f-mid':'f-low');
+    dim.classList.remove('f-good','f-mid','f-low');
+    dim.classList.add(v>=8?'f-good':v>=7?'f-mid':'f-low');
   });
   const avg=Math.round(total/inputs.length*10);
   document.getElementById('cumulativeScore').textContent=avg+' / 100';
@@ -549,12 +510,23 @@ function recalcScore(){
 document.querySelectorAll('#dimsContainer input.score-input').forEach(inp=>{
   inp.addEventListener('input',()=>{
     const score=recalcScore();
-    animateGaugeCount(score);
-    markDirty();
+    updateScoreDisplays(score);
+    animateArc(score);
+    dirty=true;
   });
 });
+function updateScoreDisplays(s){
+  ['scoreNum','headerScore','stickyScore','pricingScoreFrom'].forEach(id=>{
+    const el=document.getElementById(id); if(el)el.textContent=s;
+  });
+}
+function animateArc(score){
+  const nowArc=document.getElementById('nowArc');
+  const len=nowArc.getTotalLength();
+  nowArc.style.transition='stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1)';
+  nowArc.style.strokeDashoffset=len*(1-score/100);
+}
 
-// ─── REVEAL ON SCROLL + INITIAL BARS ─────────────────────
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
   e.target.classList.add('in');
@@ -566,7 +538,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Initial gauge animate
 (function(){
   const score=recalcScore();
   const nowArc=document.getElementById('nowArc');
@@ -576,7 +547,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   setTimeout(()=>{
     potArc.style.transition='stroke-dashoffset 1.2s cubic-bezier(.2,.7,.2,1)';
     nowArc.style.transition='stroke-dashoffset 1.2s cubic-bezier(.2,.7,.2,1) .15s';
-    potArc.style.strokeDashoffset=len*(1-87/100);
+    potArc.style.strokeDashoffset=len*(1-90/100);
     nowArc.style.strokeDashoffset=len*(1-score/100);
     const el=document.getElementById('scoreNum');
     const t0=performance.now();
@@ -584,7 +555,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   },200);
 })();
 
-// ─── BEFORE / AFTER TOGGLES ──────────────────────────────
 document.querySelectorAll('[data-ba]').forEach(card=>{
   const btns=card.querySelectorAll('.toggle button');
   btns.forEach(btn=>btn.addEventListener('click',()=>{
@@ -594,7 +564,6 @@ document.querySelectorAll('[data-ba]').forEach(card=>{
   }));
 });
 
-// ─── STICKY CTA ───────────────────────────────────────────
 const sticky=document.getElementById('stickyCta');
 const pricing=document.getElementById('pricing');
 let pastHero=false,onPricing=false;
@@ -602,101 +571,57 @@ new IntersectionObserver(es=>{pastHero=!es[0].isIntersecting;updateSticky()},{th
 new IntersectionObserver(es=>{onPricing=es[0].isIntersecting;updateSticky()},{threshold:.2}).observe(pricing);
 function updateSticky(){sticky.classList.toggle('show',pastHero&&!onPricing&&!isEditing);}
 
-// ─── EDIT MODE ────────────────────────────────────────────
-let dirty=false;
-function markDirty(){dirty=true;}
-
 function toggleEditMode(){
   isEditing=!isEditing;
-  if(isEditing){
-    savedHTML=document.body.innerHTML; // snapshot for discard
-    enterEditMode();
-  } else {
-    exitEditMode(false);
-  }
+  if(isEditing){savedHTML=document.body.innerHTML;enterEditMode();}
+  else{exitEditMode(false);}
 }
-
 function enterEditMode(){
   document.body.classList.add('editing');
   document.getElementById('editBar').classList.add('active');
   document.getElementById('editToggleBtn').textContent='✕ Exit edit mode';
-  // enable contenteditable
   document.querySelectorAll('[data-editable]').forEach(el=>{
     el.setAttribute('contenteditable','true');
-    el.addEventListener('input',markDirty);
+    el.addEventListener('input',()=>dirty=true);
   });
-  // enable score inputs
-  document.querySelectorAll('.score-input').forEach(inp=>inp.removeAttribute('disabled'));
   sticky.classList.remove('show');
   showToast('Edit mode on — click any text to edit, or change a score');
 }
-
 function exitEditMode(fromDiscard){
   document.body.classList.remove('editing');
   document.getElementById('editBar').classList.remove('active');
   document.getElementById('editToggleBtn').textContent='✎ Edit Report';
-  document.querySelectorAll('[data-editable]').forEach(el=>{
-    el.setAttribute('contenteditable','false');
-    el.blur();
-  });
-  isEditing=false;
-  dirty=false;
-  updateSticky();
-  if(!fromDiscard) showToast('Changes saved to draft');
+  document.querySelectorAll('[data-editable]').forEach(el=>{el.setAttribute('contenteditable','false');el.blur();});
+  isEditing=false;dirty=false;updateSticky();
+  if(!fromDiscard)showToast('Changes saved to draft');
 }
-
 function discardEdits(){
-  if(!dirty || confirm('Discard all changes and revert to the original?')){
-    document.body.innerHTML=savedHTML;
-    // re-bind everything after DOM swap
-    location.reload();
-  }
+  if(!dirty||confirm('Discard all changes and revert to the original?')){location.reload();}
 }
-
-function saveProgress(){
-  // In production: POST to your backend with the current HTML
-  const html=getCleanHTML();
-  // Simulate save
-  showToast('💾 Draft saved — only you can see this version');
-  dirty=false;
-}
-
+function saveProgress(){showToast('💾 Draft saved — only you can see this version');dirty=false;}
 function publishReport(){
-  if(!confirm('Publish this report? The candidate will be able to view it at their unique link.')){return;}
+  if(!confirm('Publish this report? The candidate will see this version at their link.'))return;
   const html=getCleanHTML();
-  // In production: POST html to backend, returns shareable URL
-  // For now, trigger download so you can inspect
   const blob=new Blob([html],{type:'text/html'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
   a.download='resume-report-aakash-gaurav.html';
   a.click();
   exitEditMode(false);
-  showToast('✓ Report published — candidate link copied');
+  showToast('✓ Published — replace the file in /reports/ and push');
 }
-
 function getCleanHTML(){
-  // Clone the DOM, strip editor chrome, return clean candidate HTML
   const clone=document.documentElement.cloneNode(true);
-  // Remove edit bar and edit toggle button
   clone.querySelector('#editBar')?.remove();
-  const btn=clone.querySelector('#editToggleBtn');
-  if(btn)btn.remove();
-  // Remove all edit hints
+  clone.querySelector('#editToggleBtn')?.remove();
   clone.querySelectorAll('.edit-hint').forEach(el=>el.remove());
-  // Set all contenteditable to false
   clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
-  // Remove editing class
   clone.querySelector('body')?.classList.remove('editing');
-  // Strip editor styles from script (keep report scripts)
   return '<!DOCTYPE html>\n'+clone.outerHTML;
 }
-
-// ─── TOAST ───────────────────────────────────────────────
 function showToast(msg){
   const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
+  t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 </script>
