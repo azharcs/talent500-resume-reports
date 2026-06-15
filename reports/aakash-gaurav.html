@@ -29,15 +29,24 @@ h1,h2,h3,h4{font-family:var(--display);line-height:1.2;color:var(--ink)}
 .btn-ghost:hover{background:var(--brand-soft)}
 
 /* ── EDIT TOOLBAR ── */
-#editBar{display:none;position:sticky;top:0;z-index:200;background:var(--ink);color:#fff;font-family:var(--display);font-size:14px;padding:0 20px}
-#editBar.active{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-height:52px}
-.eb-badge{background:var(--brand);color:#fff;font-weight:700;font-size:11.5px;padding:4px 10px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase}
-.eb-label{color:rgba(255,255,255,.55);font-size:13px}
+#editBar,#publishedBar{display:none;position:sticky;top:0;z-index:200;background:var(--ink);color:#fff;font-family:var(--display);font-size:14px;padding:9px 20px}
+#editBar.active,#publishedBar.active{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-height:52px}
+.eb-badge{background:var(--brand);color:#fff;font-weight:700;font-size:11.5px;padding:5px 11px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase;flex:none}
+.eb-label{color:rgba(255,255,255,.6);font-size:13px}
 .eb-spacer{flex:1}
-.eb-btn{font-family:var(--display);font-weight:700;font-size:13.5px;padding:8px 16px;border-radius:8px;border:none;cursor:pointer}
-.eb-discard{background:rgba(255,255,255,.12);color:#fff}
-.eb-save{background:var(--brand);color:#fff}
-.eb-publish{background:#fff;color:var(--ink)}
+/* Cancel = quiet text link */
+.eb-cancel{font-family:var(--display);font-weight:600;font-size:13.5px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;padding:9px 10px}
+.eb-cancel:hover{color:#fff;text-decoration:underline}
+/* Save draft = secondary outline */
+.eb-save{font-family:var(--display);font-weight:700;font-size:13.5px;background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff;cursor:pointer;padding:8px 16px;border-radius:9px}
+.eb-save:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+/* Publish = prominent primary */
+.eb-publish{font-family:var(--display);font-weight:800;font-size:13.5px;background:var(--brand);border:none;color:#fff;cursor:pointer;padding:10px 20px;border-radius:9px;box-shadow:0 4px 14px rgba(91,67,232,.5)}
+.eb-publish:hover{background:#fff;color:var(--brand)}
+/* Published confirmation bar */
+#publishedBar{background:var(--gain,#008A4E)}
+.pb-badge{background:rgba(255,255,255,.18);color:#fff;font-weight:800;font-size:11.5px;padding:5px 11px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase;flex:none}
+.pb-label{color:rgba(255,255,255,.9);font-size:13px}
 
 body.editing [data-editable]{outline:1px dashed transparent;border-radius:4px;transition:outline-color .15s,background .15s;cursor:text}
 body.editing [data-editable]:hover{outline-color:rgba(91,67,232,.4);background:rgba(91,67,232,.04)}
@@ -244,46 +253,57 @@ body.editing .add-item{display:inline-flex}
 .add-item:hover{background:var(--brand-soft)}
 
 /* ── 7-PARAMETER DIAGNOSIS ── */
-.param-head{display:grid;grid-template-columns:200px 1fr 52px 52px 56px;gap:16px;align-items:center;padding:0 0 10px;margin-bottom:6px;border-bottom:1px solid var(--line);font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.param-head .ph-score,.param-head .ph-weight,.param-head .ph-pts{text-align:center}
-.dim{grid-template-columns:200px 1fr 52px 52px 56px !important}
-.dim .wt{font-family:var(--display);font-weight:600;font-size:14px;color:var(--ink-3);text-align:center}
-.dim .pts{font-family:var(--display);font-weight:800;font-size:15px;color:var(--brand);text-align:center}
-.tag-priority{display:inline-block;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:2px 8px;border-radius:99px;margin-left:7px;vertical-align:middle}
-.score-total{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding:18px 22px;background:var(--brand);color:#fff;border-radius:14px;font-family:var(--display)}
-.score-total span{font-weight:600;font-size:15px;color:rgba(255,255,255,.85)}
-.score-total b{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.weight-legend{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 15px;margin-bottom:20px}
+.weight-legend b{color:var(--brand);font-family:var(--display)}
+.wl-dot{flex:none;width:14px;height:14px;border-radius:4px;background:var(--brand);margin-top:3px}
+.param-head{display:grid;grid-template-columns:210px 1fr 86px 66px;gap:16px;align-items:center;padding:0 0 9px;margin-bottom:4px;border-bottom:1px solid var(--line);font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.param-head .ph-score{text-align:center}
+.param-head .ph-weight{text-align:center}
+.dim{grid-template-columns:210px 1fr 86px 66px !important;padding:7px 0;border-bottom:1px solid var(--surface)}
+.dim .val{display:flex;align-items:baseline;justify-content:center;gap:2px}
+.dim .smax{font-family:var(--display);font-weight:600;font-size:12px;color:var(--ink-3)}
+.dim .wt{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:14px;color:var(--brand);background:var(--brand-soft);border-radius:8px;padding:5px 0;height:30px}
+.tag-priority{display:inline-block;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:2px 8px;border-radius:99px;margin-left:7px;vertical-align:middle}
+.score-total{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding:20px 24px;background:var(--brand);color:#fff;border-radius:14px;font-family:var(--display)}
+.score-total span{font-weight:600;font-size:16px;color:rgba(255,255,255,.85)}
+.score-total b{font-size:30px;font-weight:800;letter-spacing:-.02em}
 @media(max-width:640px){
   .param-head{display:none}
-  .dim{grid-template-columns:1fr 44px 50px !important;row-gap:6px}
+  .dim{grid-template-columns:1fr auto auto !important;row-gap:4px;column-gap:12px;padding:12px 0}
   .dim .name{grid-column:1/-1}
-  .dim .bar{grid-column:1/-1;order:5}
-  .dim .wt{display:none}
+  .dim .bar{grid-column:1/-1;order:4;margin-top:2px}
+  .dim .val{order:5}
+  .dim .wt{order:6;padding:5px 10px}
 }
 </style>
 </head>
 <body>
 
 <div id="editBar">
-  <span class="eb-badge">✎ Edit mode</span>
-  <span class="eb-label">Click any text or header to edit · manage skills below</span>
+  <span class="eb-badge">✎ Editing</span>
+  <span class="eb-label">Click any text, header, or skill to edit</span>
   <div class="eb-spacer"></div>
-  <button class="eb-btn eb-discard" onclick="discardEdits()">Discard changes</button>
-  <button class="eb-btn eb-save" onclick="saveProgress()">💾 Save draft</button>
-  <button class="eb-btn eb-publish" onclick="publishReport()">✓ Publish report</button>
+  <button class="eb-cancel" onclick="cancelEdits()">Cancel</button>
+  <button class="eb-save" onclick="saveDraft()">Save draft</button>
+  <button class="eb-publish" onclick="publishReport()">Publish to candidate</button>
+</div>
+<div id="publishedBar">
+  <span class="pb-badge">✓ Published</span>
+  <span class="pb-label">This report is live on the candidate's dashboard and the email has been sent.</span>
+  <div class="eb-spacer"></div>
+  <button class="eb-save" onclick="reopenEdit()">Edit again</button>
 </div>
 
 <div class="topbar">
   <div class="topbar-inner">
     <a class="logo" href="#">TALENT<span>500</span></a>
     <div class="score-chip">
-      <span class="now" id="headerScore">59</span>
+      <span class="now" id="headerScore">5.9</span>
       <span class="arrow">→</span>
-      <span class="target">85–90</span>
+      <span class="target">8.5–9.0</span>
       <span class="lbl">projected</span>
     </div>
-    <button class="btn" id="editToggleBtn" onclick="toggleEditMode()">✎ Edit Report</button>
-    <a class="btn btn-primary" href="#pricing">Unlock 85+</a>
+    <button class="btn" id="editToggleBtn" onclick="toggleEditMode()">✎ Edit</button>
   </div>
 </div>
 
@@ -323,9 +343,9 @@ body.editing .add-item{display:inline-flex}
             <path id="potArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="var(--brand-soft)" stroke-width="14" stroke-linecap="round"/>
             <path id="nowArc" d="M16 108 A 88 88 0 0 1 184 108" fill="none" stroke="var(--brand)" stroke-width="14" stroke-linecap="round"/>
           </svg>
-          <div class="num"><b id="scoreNum">0</b><small>your score / 100</small></div>
+          <div class="num"><b id="scoreNum">0</b><small>your score / 10</small></div>
         </div>
-        <div class="delta-line"><span class="pot">85–90</span><span class="lbl">projected after optimization</span></div>
+        <div class="delta-line"><span class="pot">8.5–9.0</span><span class="lbl">projected after optimization</span></div>
         <p class="edit-hint">↑ Edit scores in the "10 Dimensions" section — gauge updates live</p>
       </div>
     </div>
@@ -464,24 +484,25 @@ body.editing .add-item{display:inline-flex}
 <!-- 7 PARAMETERS -->
 <section class="wrap reveal">
   <p class="kicker"><span data-editable contenteditable="false">05 · Resume diagnosis</span></p>
-  <h2 data-editable contenteditable="false">Your score across 7 weighted parameters</h2>
-  <p class="sec-sub">Scored on a strict, calibrated rubric where a typical resume lands at 5–6. Cumulative score: <b id="cumulativeScore" style="font-family:var(--display)">59 / 100</b>.</p>
-  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score (0–10) to change it. Each parameter's weighted contribution, the totals, and the gauge update automatically.</p>
+  <h2 data-editable contenteditable="false">Your score across 7 parameters</h2>
+  <p class="sec-sub">Scored on a strict, calibrated rubric where a typical resume lands at 5–6 out of 10. Your overall score: <b id="cumulativeScore" style="font-family:var(--display);color:var(--brand)">5.9 / 10</b>.</p>
+  <div class="weight-legend"><span class="wl-dot"></span>The <b>%</b> next to each parameter is how much it counts toward your overall score out of 10. Bigger % = bigger lever.</div>
+  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score (0–10) to change it. The overall score and gauge update automatically.</p>
   <div class="param-head">
-    <span>Parameter</span><span class="ph-score">Score</span><span class="ph-weight">Weight</span><span class="ph-pts">Points</span>
+    <span>Parameter</span><span></span><span class="ph-score">Score / 10</span><span class="ph-weight">Counts for</span>
   </div>
   <div class="dims" id="dimsContainer">
-    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Clarity &amp; Structure<small>Sections present and mostly scannable, but some dense blocks and minor formatting inconsistencies.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×15</div><div class="pts">9.0</div></div>
-    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Role &amp; Level Positioning <span class="tag-priority">Priority</span><small>Role reads as mid-to-senior QA, but there's no sharp summary stating role + years + level; seniority signal is fuzzy.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×15</div><div class="pts">9.0</div></div>
-    <div class="dim" data-weight="25"><div class="name" data-editable contenteditable="false">Impact &amp; Achievements <span class="tag-priority">Highest weight</span><small>Only a handful of quantified outcomes; most bullets are duty statements rather than action → measurable result.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="5" min="0" max="10"/></div><div class="wt">×25</div><div class="pts">12.5</div></div>
-    <div class="dim" data-weight="20"><div class="name" data-editable contenteditable="false">Skills &amp; Relevance <span class="tag-priority">Priority</span><small>Relevant skills are present but largely listed, not demonstrated inside experience bullets; some keyword scatter.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×20</div><div class="pts">12.0</div></div>
-    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">Career Trajectory &amp; Consistency<small>Generally logical, stable progression within QA; growth in scope could be made more explicit.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div><div class="wt">×10</div><div class="pts">7.0</div></div>
-    <div class="dim" data-weight="5"><div class="name" data-editable contenteditable="false">Language &amp; Professionalism<small>Mostly clean and professional; occasional dense phrasing and minor tense inconsistency.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div><div class="wt">×5</div><div class="pts">3.5</div></div>
-    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">ATS &amp; Formatting Hygiene<small>Largely parseable, but mixed formatting and scattered keywords create some ATS parsing risk.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×10</div><div class="pts">6.0</div></div>
+    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Clarity &amp; Structure<small>Sections present and mostly scannable, but some dense blocks and minor formatting inconsistencies.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">15%</div></div>
+    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Role &amp; Level Positioning <span class="tag-priority">Priority</span><small>Role reads as mid-to-senior QA, but there's no sharp summary stating role + years + level; seniority signal is fuzzy.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">15%</div></div>
+    <div class="dim" data-weight="25"><div class="name" data-editable contenteditable="false">Impact &amp; Achievements <span class="tag-priority">Biggest lever</span><small>Only a handful of quantified outcomes; most bullets are duty statements rather than action → measurable result.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="5" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">25%</div></div>
+    <div class="dim" data-weight="20"><div class="name" data-editable contenteditable="false">Skills &amp; Relevance <span class="tag-priority">Priority</span><small>Relevant skills are present but largely listed, not demonstrated inside experience bullets; some keyword scatter.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">20%</div></div>
+    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">Career Trajectory &amp; Consistency<small>Generally logical, stable progression within QA; growth in scope could be made more explicit.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">10%</div></div>
+    <div class="dim" data-weight="5"><div class="name" data-editable contenteditable="false">Language &amp; Professionalism<small>Mostly clean and professional; occasional dense phrasing and minor tense inconsistency.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">5%</div></div>
+    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">ATS &amp; Formatting Hygiene<small>Largely parseable, but mixed formatting and scattered keywords create some ATS parsing risk.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/><span class="smax">/10</span></div><div class="wt">10%</div></div>
   </div>
   <div class="score-total">
-    <span>Total weighted score</span>
-    <b><span id="totalScore">59</span> / 100</b>
+    <span>Your overall score</span>
+    <b><span id="totalScore">5.9</span> / 10</b>
   </div>
 </section>
 
@@ -517,7 +538,7 @@ body.editing .add-item{display:inline-flex}
     <div class="lock-overlay">
       <div class="lock">🔒</div>
       <h3 data-editable contenteditable="false">Unlock your full optimized resume</h3>
-      <p data-editable contenteditable="false">Includes a 30-min call with your resume expert, full rewrite, and a re-scored diagnosis targeting 85+.</p>
+      <p data-editable contenteditable="false">Includes a 30-min call with your resume expert, full rewrite, and a re-scored diagnosis targeting 8.5+ / 10.</p>
       <a class="btn btn-primary" href="#pricing">See plans · from ₹2,300</a>
     </div>
   </div>
@@ -527,7 +548,7 @@ body.editing .add-item{display:inline-flex}
 <section id="pricing">
   <div class="wrap reveal">
     <p class="kicker"><span data-editable contenteditable="false">08 · Recommended next step</span></p>
-    <h2 data-editable contenteditable="false">Take your score from 59 → 85–90</h2>
+    <h2 data-editable contenteditable="false">Take your score from 5.9 → 8.5–9.0</h2>
     <p class="sec-sub" data-editable contenteditable="false">Both plans include a one-on-one call with a resume expert and a re-scored diagnosis after optimization.</p>
     <div class="validity">⏱ Report pricing valid until&nbsp;<b data-editable contenteditable="false">17 June 2026</b></div>
     <div class="plans">
@@ -538,7 +559,7 @@ body.editing .add-item{display:inline-flex}
         <ul>
           <li data-editable contenteditable="false">30-min profile discussion call with a resume expert</li>
           <li data-editable contenteditable="false">Full resume rewrite (1–2 page professional format)</li>
-          <li data-editable contenteditable="false">ATS &amp; keyword alignment targeting 85+ score</li>
+          <li data-editable contenteditable="false">ATS &amp; keyword alignment targeting 8.5+ / 10</li>
           <li data-editable contenteditable="false">Clean, modern, ATS-safe design (PDF)</li>
           <li data-editable contenteditable="false">Re-scored resume diagnosis after optimization</li>
           <li class="no" data-editable contenteditable="false">LinkedIn profile optimization</li>
@@ -587,7 +608,7 @@ body.editing .add-item{display:inline-flex}
   <h2 data-editable contenteditable="false">Frequently asked</h2>
   <div style="margin-top:20px">
     <details><summary data-editable contenteditable="false">What exactly happens after I pay?</summary><p data-editable contenteditable="false">You'll be connected with a resume expert within 2–3 working days for a 30-minute profile discussion. Your first draft is delivered 3 working days after the call, followed by a revision cycle and a re-scored diagnosis.</p></details>
-    <details><summary data-editable contenteditable="false">Will the new resume pass ATS systems?</summary><p data-editable contenteditable="false">Yes — the rewrite uses ATS-safe formatting and keyword alignment targeting an 85+ score on the same diagnosis you've just seen, validated before delivery.</p></details>
+    <details><summary data-editable contenteditable="false">Will the new resume pass ATS systems?</summary><p data-editable contenteditable="false">Yes — the rewrite uses ATS-safe formatting and keyword alignment targeting an 8.5+ / 10 on the same diagnosis you've just seen, validated before delivery.</p></details>
     <details><summary data-editable contenteditable="false">Can I use this for specific roles or companies?</summary><p data-editable contenteditable="false">The expert call covers your target roles and companies, and the rewrite is positioned for them. The Resume Package also includes a role-specific cover letter.</p></details>
     <details><summary data-editable contenteditable="false">Is this written by AI?</summary><p data-editable contenteditable="false">Your resume is rewritten by a resume expert, supported by our ATS analysis tooling. The diagnosis you've just read combines both.</p></details>
   </div>
@@ -603,7 +624,7 @@ body.editing .add-item{display:inline-flex}
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-inner">
-    <div><div class="delta"><span id="stickyScore">59</span> <span style="color:var(--ink-3)">→</span> <span class="t">85–90</span></div><div class="sub">Pricing valid 7 days</div></div>
+    <div><div class="delta"><span id="stickyScore">5.9</span> <span style="color:var(--ink-3)">→</span> <span class="t">8.5–9.0</span></div><div class="sub">Pricing valid 7 days</div></div>
     <a class="btn btn-primary" href="#pricing">Unlock</a>
   </div>
 </div>
@@ -620,25 +641,22 @@ function recalcScore(){
     const inp=dim.querySelector('.score-input');
     const w=parseFloat(dim.dataset.weight)||0;
     const v=Math.max(0,Math.min(10,parseInt(inp.value)||0));
-    const pts=(v/10)*w;
-    weighted+=pts;
+    weighted+=(v/10)*w;            /* weights sum to 100 */
     dim.querySelector('.bar i').style.width=(v*10)+'%';
-    const ptsEl=dim.querySelector('.pts');
-    if(ptsEl)ptsEl.textContent=pts.toFixed(1);
   });
-  const final100=Math.round(weighted); /* weights sum to 100, so weighted points = score/100 */
-  const cum=document.getElementById('cumulativeScore'); if(cum)cum.textContent=final100+' / 100';
-  const tot=document.getElementById('totalScore'); if(tot)tot.textContent=final100;
-  return final100;
+  const final10=Math.round(weighted/10*10)/10;   /* divide by 10 -> out of 10, 1 decimal */
+  const tot=document.getElementById('totalScore'); if(tot)tot.textContent=final10.toFixed(1);
+  const cum=document.getElementById('cumulativeScore'); if(cum)cum.textContent=final10.toFixed(1)+' / 10';
+  return final10;
 }
 document.querySelectorAll('#dimsContainer input.score-input').forEach(inp=>{
   inp.addEventListener('input',()=>{
     const score=recalcScore();
-    ['scoreNum','headerScore','stickyScore'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=score;});
+    ['scoreNum','headerScore','stickyScore'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=score.toFixed(1);});
     const nowArc=document.getElementById('nowArc');
     const len=nowArc.getTotalLength();
     nowArc.style.transition='stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1)';
-    nowArc.style.strokeDashoffset=len*(1-score/100);
+    nowArc.style.strokeDashoffset=len*(1-score/10);
     dirty=true;
   });
 });
@@ -663,11 +681,11 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   setTimeout(()=>{
     potArc.style.transition='stroke-dashoffset 1.2s cubic-bezier(.2,.7,.2,1)';
     nowArc.style.transition='stroke-dashoffset 1.2s cubic-bezier(.2,.7,.2,1) .15s';
-    potArc.style.strokeDashoffset=len*(1-90/100);
-    nowArc.style.strokeDashoffset=len*(1-score/100);
+    potArc.style.strokeDashoffset=len*(1-9.0/10);
+    nowArc.style.strokeDashoffset=len*(1-score/10);
     const el=document.getElementById('scoreNum');
     const t0=performance.now();
-    (function tick(t){const p=Math.min((t-t0)/1100,1);el.textContent=Math.round(score*(p<.5?2*p*p:-1+(4-2*p)*p));if(p<1)requestAnimationFrame(tick);else el.textContent=score;})(t0);
+    (function tick(t){const p=Math.min((t-t0)/1100,1);const cur=score*(p<.5?2*p*p:-1+(4-2*p)*p);el.textContent=cur.toFixed(1);if(p<1)requestAnimationFrame(tick);else el.textContent=score.toFixed(1);})(t0);
   },200);
 })();
 
@@ -764,42 +782,54 @@ function addCategory(){
 }
 
 /* ── EDIT MODE ── */
-function toggleEditMode(){isEditing=!isEditing;isEditing?enterEditMode():exitEditMode(false);}
-function enterEditMode(){
+function toggleEditMode(){isEditing?stopEditing():startEditing();}
+function startEditing(){
+  isEditing=true;
   document.body.classList.add('editing');
   document.getElementById('editBar').classList.add('active');
-  document.getElementById('editToggleBtn').textContent='✕ Exit edit mode';
+  document.getElementById('publishedBar').classList.remove('active');
+  document.getElementById('editToggleBtn').textContent='✕ Close editor';
   document.querySelectorAll('[data-editable]').forEach(el=>{
     el.setAttribute('contenteditable','true');
     el.addEventListener('input',()=>dirty=true);
   });
   sticky.classList.remove('show');
-  showToast('Edit mode on — edit any text, header, or skill');
 }
-function exitEditMode(fromDiscard){
+function stopEditing(){
   document.body.classList.remove('editing');
   document.getElementById('editBar').classList.remove('active');
-  document.getElementById('editToggleBtn').textContent='✎ Edit Report';
+  document.getElementById('editToggleBtn').textContent='✎ Edit';
   document.querySelectorAll('[data-editable]').forEach(el=>{el.setAttribute('contenteditable','false');el.blur();});
   isEditing=false;dirty=false;updateSticky();
-  if(!fromDiscard)showToast('Changes saved to draft');
 }
-function discardEdits(){if(!dirty||confirm('Discard all changes and revert to the original?'))location.reload();}
-function saveProgress(){showToast('💾 Draft saved — only you can see this version');dirty=false;}
+/* Cancel — throw away changes */
+function cancelEdits(){
+  if(!dirty||confirm('Discard your changes? Anything not saved will be lost.'))location.reload();
+}
+/* Save draft — keep working privately (no candidate-facing effect) */
+function saveDraft(){
+  /* BACKEND HOOK: POST getCleanHTML() to /reports/:id/draft (status stays "draft") */
+  dirty=false;
+  showToast('Draft saved — not yet visible to the candidate');
+}
+/* Publish — the one candidate-facing action */
 function publishReport(){
-  if(!confirm('Publish this report? The candidate will see this version at their link.'))return;
-  const html=getCleanHTML();
-  const blob=new Blob([html],{type:'text/html'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='resume-report-aakash-gaurav.html';
-  a.click();
-  exitEditMode(false);
-  showToast('✓ Published — replace the file in /reports/ and push');
+  if(!confirm('Publish this report?\n\nIt will appear on the candidate\'s dashboard and they\'ll be emailed the link to view it.'))return;
+  /* BACKEND HOOK: POST getCleanHTML() to /reports/:id/publish (status -> "published", triggers email) */
+  stopEditing();
+  document.getElementById('publishedBar').classList.add('active');
+  document.getElementById('editToggleBtn').textContent='✎ Edit';
+  showToast('✓ Published — report is live and the candidate has been emailed');
+}
+/* Re-open editor from the published state */
+function reopenEdit(){
+  document.getElementById('publishedBar').classList.remove('active');
+  startEditing();
 }
 function getCleanHTML(){
   const clone=document.documentElement.cloneNode(true);
   clone.querySelector('#editBar')?.remove();
+  clone.querySelector('#publishedBar')?.remove();
   clone.querySelector('#editToggleBtn')?.remove();
   clone.querySelectorAll('.edit-hint,.chip-x,.chip-add,.group-x,.add-category,.item-x,.add-item').forEach(el=>el.remove());
   clone.querySelectorAll('.chip').forEach(c=>{const t=c.querySelector('.chip-txt');if(!t||!t.textContent.trim())c.remove();});
