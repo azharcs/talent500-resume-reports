@@ -242,6 +242,24 @@ body.editing .item-x{display:inline-flex}
 .add-item{display:none;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--brand);background:#fff;border:1.5px dashed var(--brand);padding:12px 19px;border-radius:12px;cursor:pointer;margin-top:14px}
 body.editing .add-item{display:inline-flex}
 .add-item:hover{background:var(--brand-soft)}
+
+/* ── 7-PARAMETER DIAGNOSIS ── */
+.param-head{display:grid;grid-template-columns:200px 1fr 52px 52px 56px;gap:16px;align-items:center;padding:0 0 10px;margin-bottom:6px;border-bottom:1px solid var(--line);font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.param-head .ph-score,.param-head .ph-weight,.param-head .ph-pts{text-align:center}
+.dim{grid-template-columns:200px 1fr 52px 52px 56px !important}
+.dim .wt{font-family:var(--display);font-weight:600;font-size:14px;color:var(--ink-3);text-align:center}
+.dim .pts{font-family:var(--display);font-weight:800;font-size:15px;color:var(--brand);text-align:center}
+.tag-priority{display:inline-block;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:2px 8px;border-radius:99px;margin-left:7px;vertical-align:middle}
+.score-total{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding:18px 22px;background:var(--brand);color:#fff;border-radius:14px;font-family:var(--display)}
+.score-total span{font-weight:600;font-size:15px;color:rgba(255,255,255,.85)}
+.score-total b{font-size:26px;font-weight:800;letter-spacing:-.02em}
+@media(max-width:640px){
+  .param-head{display:none}
+  .dim{grid-template-columns:1fr 44px 50px !important;row-gap:6px}
+  .dim .name{grid-column:1/-1}
+  .dim .bar{grid-column:1/-1;order:5}
+  .dim .wt{display:none}
+}
 </style>
 </head>
 <body>
@@ -259,7 +277,7 @@ body.editing .add-item{display:inline-flex}
   <div class="topbar-inner">
     <a class="logo" href="#">TALENT<span>500</span></a>
     <div class="score-chip">
-      <span class="now" id="headerScore">66</span>
+      <span class="now" id="headerScore">59</span>
       <span class="arrow">→</span>
       <span class="target">85–90</span>
       <span class="lbl">projected</span>
@@ -443,23 +461,27 @@ body.editing .add-item{display:inline-flex}
   </div>
 </section>
 
-<!-- 10 DIMENSIONS -->
+<!-- 7 PARAMETERS -->
 <section class="wrap reveal">
   <p class="kicker"><span data-editable contenteditable="false">05 · Resume diagnosis</span></p>
-  <h2 data-editable contenteditable="false">Your score across 10 dimensions</h2>
-  <p class="sec-sub">Cumulative score: <b id="cumulativeScore" style="font-family:var(--display)">66 / 100</b>. Anything below 7 is actively costing you shortlists.</p>
-  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score number to change it. The gauge and totals update automatically.</p>
+  <h2 data-editable contenteditable="false">Your score across 7 weighted parameters</h2>
+  <p class="sec-sub">Scored on a strict, calibrated rubric where a typical resume lands at 5–6. Cumulative score: <b id="cumulativeScore" style="font-family:var(--display)">59 / 100</b>.</p>
+  <p class="edit-hint" style="margin-bottom:14px">↑ Click a score (0–10) to change it. Each parameter's weighted contribution, the totals, and the gauge update automatically.</p>
+  <div class="param-head">
+    <span>Parameter</span><span class="ph-score">Score</span><span class="ph-weight">Weight</span><span class="ph-pts">Points</span>
+  </div>
   <div class="dims" id="dimsContainer">
-    <div class="dim"><div class="name" data-editable contenteditable="false">Technical depth<small>Excellent QA, automation and API testing experience</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="8" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">ATS optimization<small>Keywords present but need structured placement</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Keyword alignment<small>Strong technical terms; weak for senior QA roles</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Role alignment<small>Strong fit for QA engineer/lead; clarity can improve</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Market competitiveness<small>Strong mid-to-senior profile; metrics will boost it</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Recruiter readability<small>Dense content; achievements need highlighting</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Leadership positioning<small>Coordination present; mentorship not emphasized</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Achievement visibility<small>Minimal quantification of project and team impact</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Business impact<small>Technical impact shown; measurable outcomes weak</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
-    <div class="dim"><div class="name" data-editable contenteditable="false">Formatting<small>Chronological; needs recruiter-friendly modernization</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div></div>
+    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Clarity &amp; Structure<small>Sections present and mostly scannable, but some dense blocks and minor formatting inconsistencies.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×15</div><div class="pts">9.0</div></div>
+    <div class="dim" data-weight="15"><div class="name" data-editable contenteditable="false">Role &amp; Level Positioning <span class="tag-priority">Priority</span><small>Role reads as mid-to-senior QA, but there's no sharp summary stating role + years + level; seniority signal is fuzzy.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×15</div><div class="pts">9.0</div></div>
+    <div class="dim" data-weight="25"><div class="name" data-editable contenteditable="false">Impact &amp; Achievements <span class="tag-priority">Highest weight</span><small>Only a handful of quantified outcomes; most bullets are duty statements rather than action → measurable result.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="5" min="0" max="10"/></div><div class="wt">×25</div><div class="pts">12.5</div></div>
+    <div class="dim" data-weight="20"><div class="name" data-editable contenteditable="false">Skills &amp; Relevance <span class="tag-priority">Priority</span><small>Relevant skills are present but largely listed, not demonstrated inside experience bullets; some keyword scatter.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×20</div><div class="pts">12.0</div></div>
+    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">Career Trajectory &amp; Consistency<small>Generally logical, stable progression within QA; growth in scope could be made more explicit.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div><div class="wt">×10</div><div class="pts">7.0</div></div>
+    <div class="dim" data-weight="5"><div class="name" data-editable contenteditable="false">Language &amp; Professionalism<small>Mostly clean and professional; occasional dense phrasing and minor tense inconsistency.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="7" min="0" max="10"/></div><div class="wt">×5</div><div class="pts">3.5</div></div>
+    <div class="dim" data-weight="10"><div class="name" data-editable contenteditable="false">ATS &amp; Formatting Hygiene<small>Largely parseable, but mixed formatting and scattered keywords create some ATS parsing risk.</small></div><div class="bar"><i></i></div><div class="val"><input type="number" class="score-input" value="6" min="0" max="10"/></div><div class="wt">×10</div><div class="pts">6.0</div></div>
+  </div>
+  <div class="score-total">
+    <span>Total weighted score</span>
+    <b><span id="totalScore">59</span> / 100</b>
   </div>
 </section>
 
@@ -505,7 +527,7 @@ body.editing .add-item{display:inline-flex}
 <section id="pricing">
   <div class="wrap reveal">
     <p class="kicker"><span data-editable contenteditable="false">08 · Recommended next step</span></p>
-    <h2 data-editable contenteditable="false">Take your score from 66 → 85–90</h2>
+    <h2 data-editable contenteditable="false">Take your score from 59 → 85–90</h2>
     <p class="sec-sub" data-editable contenteditable="false">Both plans include a one-on-one call with a resume expert and a re-scored diagnosis after optimization.</p>
     <div class="validity">⏱ Report pricing valid until&nbsp;<b data-editable contenteditable="false">17 June 2026</b></div>
     <div class="plans">
@@ -581,7 +603,7 @@ body.editing .add-item{display:inline-flex}
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-inner">
-    <div><div class="delta"><span id="stickyScore">66</span> <span style="color:var(--ink-3)">→</span> <span class="t">85–90</span></div><div class="sub">Pricing valid 7 days</div></div>
+    <div><div class="delta"><span id="stickyScore">59</span> <span style="color:var(--ink-3)">→</span> <span class="t">85–90</span></div><div class="sub">Pricing valid 7 days</div></div>
     <a class="btn btn-primary" href="#pricing">Unlock</a>
   </div>
 </div>
@@ -592,16 +614,22 @@ body.editing .add-item{display:inline-flex}
 let isEditing=false,dirty=false;
 
 function recalcScore(){
-  const inputs=document.querySelectorAll('#dimsContainer input.score-input');
-  let total=0;
-  inputs.forEach(inp=>{
+  const dims=document.querySelectorAll('#dimsContainer .dim');
+  let weighted=0;
+  dims.forEach(dim=>{
+    const inp=dim.querySelector('.score-input');
+    const w=parseFloat(dim.dataset.weight)||0;
     const v=Math.max(0,Math.min(10,parseInt(inp.value)||0));
-    total+=v;
-    inp.closest('.dim').querySelector('.bar i').style.width=(v*10)+'%';
+    const pts=(v/10)*w;
+    weighted+=pts;
+    dim.querySelector('.bar i').style.width=(v*10)+'%';
+    const ptsEl=dim.querySelector('.pts');
+    if(ptsEl)ptsEl.textContent=pts.toFixed(1);
   });
-  const avg=Math.round(total/inputs.length*10);
-  document.getElementById('cumulativeScore').textContent=avg+' / 100';
-  return avg;
+  const final100=Math.round(weighted); /* weights sum to 100, so weighted points = score/100 */
+  const cum=document.getElementById('cumulativeScore'); if(cum)cum.textContent=final100+' / 100';
+  const tot=document.getElementById('totalScore'); if(tot)tot.textContent=final100;
+  return final100;
 }
 document.querySelectorAll('#dimsContainer input.score-input').forEach(inp=>{
   inp.addEventListener('input',()=>{
